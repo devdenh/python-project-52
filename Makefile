@@ -2,7 +2,7 @@ MANAGE := poetry run python manage.py
 
 .PHONY: test
 test:
-	@poetry run pytest
+	poetry run python manage.py test
 
 .PHONY: install
 install:
@@ -32,3 +32,6 @@ check: selfcheck lint
 
 start:
 	poetry run python manage.py runserver 0.0.0.0:8000
+
+push: check
+	git push

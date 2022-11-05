@@ -83,6 +83,7 @@ IS_HEROKU = "DYNO" in os.environ
 
 DATABASE_URL = 'postgresql://<postgresql>' if IS_HEROKU else (
     'sqlite:///' + os.path.join(BASE_DIR, 'db.sqlite3'))
+print(DATABASE_URL)
 
 DATABASES = {'default': dj_database_url.config(default=DATABASE_URL)}
 
