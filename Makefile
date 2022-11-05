@@ -25,5 +25,7 @@ test-coverage:
 	poetry run coverage html
 	poetry run coverage report
 
-check:
+selfcheck:
 	poetry check
+
+check: selfcheck lint
