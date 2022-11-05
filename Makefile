@@ -18,7 +18,7 @@ shell:
 
 .PHONY: lint
 lint:
-	@poetry run flake8 python_django_orm_blog
+	@poetry run flake8 task_manager
 
 test-coverage:
 	poetry run coverage run manage.py test
