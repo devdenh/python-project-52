@@ -21,9 +21,9 @@ lint:
 	@poetry run flake8 task_manager
 
 test-coverage:
-	poetry run coverage run manage.py test
-	poetry run coverage html
+	poetry run coverage run --source='.' manage.py test
 	poetry run coverage report
+	poetry run coverage xml
 
 selfcheck:
 	poetry check
