@@ -14,7 +14,7 @@ migrate:
 
 .PHONY: shell
 shell:
-	@$(MANAGE) shell_plus --ipython
+	@$(MANAGE) shell
 
 .PHONY: lint
 lint:
@@ -31,7 +31,7 @@ selfcheck:
 check: selfcheck lint
 
 start:
-	poetry run python manage.py runserver 0.0.0.0:8000
+	poetry run python manage.py runserver
 
 push: check
 	git push

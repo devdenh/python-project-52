@@ -1,58 +1,18 @@
-<!DOCTYPE html>
-<html lang="ru-ru">
-  <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Менеджер задач Hexlet</title>
-  </head>
-  <body class="d-flex flex-column min-vh-100">
-    <nav class="navbar navbar-expand-lg navbar-light bg-light mb-3">
-      <a class="navbar-brand" href="/">Менеджер задач</a>
-      <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarToggleExternalContent">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarToggleExternalContent">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item">
-            <a class="nav-link" href="/users/">Пользователи</a>
-          </li>
 
-        </ul>
-        <ul class="navbar-nav">
+{% extends 'layouts/base.html' %}
+{% load i18n %}
 
-            <li class="nav-item">
-              <a class="nav-link" href="/login/">Вход</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/users/create/">Регистрация</a>
-            </li>
+{% block content %}
+<main role="main">
 
-        </ul>
-      </div>
-    </nav>
-    <div class="container wrapper flex-grow-1">
-
-
-
-      <h1 class="my-4">
-
-
-      </h1>
-
-<h1 class="my-4"></h1>
-<div class="card">
-  <div class="card-body p-5 bg-light">
-    <div class="display-4">Привет от Хекслета!</div>
-    <p class="lead">Практические курсы по программированию</p>
-    <hr>
-    <a class="btn btn-primary btn-lg" href="https://ru.hexlet.io">Узнать больше</a>
-  </div>
-</div>
-
+    <h1 style="height: 75px"></h1>
+  <div class="jumbotron h-50">
+    <div class="container">
+      <h1 class="display-3">{% translate "Hello from Hexlet!"%}</h1>
+      <p>{% translate "Practical programming courses" %}</p>
+      <p><a class="btn btn-primary btn-lg" href="https://ru.hexlet.io" role="button">{% translate "Learn more" %} &raquo;</a></p>
     </div>
-    <footer>
-      <div class="container my-5 pt-4 border-top">
-        <a target="_blank" href="https://ru.hexlet.io">Hexlet</a>
-      </div>
-    </footer>
-  </body>
-</html>
+  </div>
+
+</main>
+{% endblock %}
