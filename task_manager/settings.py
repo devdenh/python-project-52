@@ -84,12 +84,9 @@ WSGI_APPLICATION = "task_manager.wsgi.application"
 
 IS_HEROKU = "DYNO" in os.environ
 
-DATABASE_URL = os.getenv('DATABASE_URL')
+DATABASE_URL = 'sqlite:///' + os.path.join(BASE_DIR, 'db.sqlite3')
 
-
-DATABASES = {'default': dj_database_url.config(
-    default=DATABASE_URL,
-    engine="django.db.backends.postgresql")}
+DATABASES = {'default': dj_database_url.config(default=DATABASE_URL)}
 
 
 # Password validation
