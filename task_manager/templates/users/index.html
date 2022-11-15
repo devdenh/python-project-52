@@ -1,0 +1,36 @@
+{% extends 'layouts/base.html' %}
+{% load i18n %}
+
+{% block header %}
+{% translate "Users" %}
+{% endblock %}
+
+
+{% block content %}
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>{% translate "id"|upper %}</th>
+      <th>{% translate "user name"|capfirst %}</th>
+      <th>{% translate "full name"|capfirst %}</th>
+      <th>{% translate "created at"|capfirst %}</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for user in object_list %}
+      <tr>
+        <td>{{ user.id }}</td>
+        <td>{{ user.username }}</td>
+        <td>{{ user.first_name }} {{ user.last_name }}</td>
+        <td>{{ user.created_at|date:"d.m.Y H:i" }}</td>
+        <td>
+          <a href="{% url 'users:update' user.pk %}">{% translate "Update" %}</a>
+          <br>
+          <a href="{% url 'users:delete' user.pk %}">{% translate "Delete" %}</a>
+        </td>
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

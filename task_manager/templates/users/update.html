@@ -1,0 +1,9 @@
+{% extends 'layouts/form.html' %}
+{% load i18n %}
+
+{% block header %}
+{% translate "Update" %}
+{% endblock %}
+
+{% bootstrap_messages %}
+{% block button_value %}{% translate "Update" %}{% endblock %}

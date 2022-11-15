@@ -10,11 +10,12 @@ install:
 
 .PHONY: migrate
 migrate:
+	@$(MANAGE) makemigrations
 	@$(MANAGE) migrate
 
 .PHONY: shell
 shell:
-	@$(MANAGE) shell
+	@$(MANAGE) shell_plus --ipython
 
 .PHONY: lint
 lint:

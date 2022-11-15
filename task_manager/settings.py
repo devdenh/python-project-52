@@ -42,8 +42,10 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    'django_extensions',
+    "bootstrap4",
     "task_manager",
-    'bootstrap4',
+    "task_manager.users",
 ]
 
 MIDDLEWARE = [
@@ -82,8 +84,11 @@ WSGI_APPLICATION = "task_manager.wsgi.application"
 
 IS_HEROKU = "DYNO" in os.environ
 
-DATABASE_URL = 'postgresql://<postgresql>' if IS_HEROKU else (
-    'sqlite:///' + os.path.join(BASE_DIR, 'db.sqlite3'))
+DATABASE_URL = 'postgresql://postgres:asdfBb1a@localhost/taskmanager'
+
+# if IS_HEROKU else (
+# 'sqlite:///' + os.path.join(BASE_DIR, 'db.sqlite3'))
+
 
 DATABASES = {'default': dj_database_url.config(default=DATABASE_URL)}
 
@@ -106,6 +111,13 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+AUTH_USER_MODEL = 'users.User'
+
+LOGIN_REDIRECT_URL = 'root'
+
+LOGOUT_REDIRECT_URL = 'root'
+
+LOGIN_URL = '/login'
 
 # Internationalization
 # https://docs.djangoproject.com/en/4.1/topics/i18n/

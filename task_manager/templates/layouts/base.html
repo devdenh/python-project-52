@@ -1,7 +1,10 @@
 {% load bootstrap4 %}
 {% load i18n %}
+
 {% get_current_language as LANGUAGE_CODE %}
 {% bootstrap_javascript jquery='full' %}
+
+
 <!doctype html>
 <html lang="{{ LANGUAGE_CODE }}">
 
@@ -13,35 +16,51 @@
   </head>
   <body >
 
-<nav class="navbar navbar-expand-lg navbar-light bg-dark mb-3">
-      <a class="navbar-brand text-white bg-dark" href="/">{% translate "Task manager" %}</a>
+<nav class="navbar navbar-expand-lg navbar-light bg-dark ">
+      <a class="navbar-brand text-white bg-dark" href={% url 'root' %}>{% translate "Task manager" %}</a>
       <button class="navbar-toggler collapsed bg-light" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-expanded="false">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="navbar-collapse collapse" id="navbarToggleExternalContent" style="">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item ">
-            <a class="nav-link text-white" href="/users/">{% translate "Users" %}</a>
+            <a class="nav-link text-white" href={% url 'users:index' %}>{% translate "Users" %}</a>
           </li>
 
         </ul>
         <ul class="navbar-nav">
-
+            {% if request.user.is_authenticated %}
             <li class="nav-item">
-              <a class="nav-link text-white" href="/login/">{% translate "Log in" %}</a>
+              <a class="nav-link text-white" href="{% url 'logout' %}">{% translate 'Log out' %}</a>
+            {% else %}
+            <li class="nav-item">
+              <a class="nav-link text-white" href={% url 'login' %}>{% translate "Log in" %}</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link text-white" href="/users/create/">{% translate "Sing up" %}</a>
+              <a class="nav-link text-white" href={% url 'users:create' %}>{% translate "Sing up" %}</a>
             </li>
+            {% endif %}
 
         </ul>
       </div>
     </nav>
 
-  {% block content %}{% endblock %}
+  <div class="jumbotron">
+    <div class="container">
 
-<footer>
-  <div class="container my-5 pt-4 border-top">
+      <h1>
+        {% block header %}
+        {% endblock %}
+      </h1>
+{% bootstrap_messages %}
+    {% block content %}{% endblock %}
+
+    </div>
+  </div>
+
+
+<footer  >
+  <div class="container border-top">
         <a target="_blank" href="https://ru.hexlet.io">{% translate "Hexlet" %}</a>
       </div>
 </footer>

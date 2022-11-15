@@ -1,18 +1,16 @@
-
 {% extends 'layouts/base.html' %}
+{% load bootstrap4 %}
 {% load i18n %}
 
-{% block content %}
-<main role="main">
+{% bootstrap_css %}
+{% bootstrap_javascript jquery='full' %}
 
-    <h1 style="height: 75px"></h1>
-  <div class="jumbotron h-50">
-    <div class="container">
-      <h1 class="display-3">{% translate "Hello from Hexlet!"%}</h1>
+{% bootstrap_messages %}
+
+{% block content %}
+
+      <h1 class="display-3 pt-5 mt-5 pb-5">{% translate "Hello from Hexlet!"%}</h1>
       <p>{% translate "Practical programming courses" %}</p>
       <p><a class="btn btn-primary btn-lg" href="https://ru.hexlet.io" role="button">{% translate "Learn more" %} &raquo;</a></p>
-    </div>
-  </div>
 
-</main>
 {% endblock %}

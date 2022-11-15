@@ -1,0 +1,15 @@
+{% extends 'layouts/form.html' %}
+{% load bootstrap4 %}
+{% load i18n %}
+
+{% bootstrap_css %}
+{% bootstrap_javascript jquery='full' %}
+
+{% bootstrap_messages %}
+
+
+{% block header %}
+{% translate "Log in" %}
+{% endblock %}
+
+{% block button_value %}{% translate "Log in" %}{% endblock %}
