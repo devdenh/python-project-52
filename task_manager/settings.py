@@ -84,7 +84,7 @@ WSGI_APPLICATION = "task_manager.wsgi.application"
 
 IS_HEROKU = "DYNO" in os.environ
 
-DATABASE_URL = 'postgresql://postgres:asdfBb1a@localhost/taskmanager'
+DATABASE_URL = os.getenv('DATABASE_URL')
 
 # if IS_HEROKU else (
 # 'sqlite:///' + os.path.join(BASE_DIR, 'db.sqlite3'))
