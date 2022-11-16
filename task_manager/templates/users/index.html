@@ -1,10 +1,12 @@
 {% extends 'layouts/base.html' %}
+{% load bootstrap4 %}
 {% load i18n %}
 
 {% block header %}
 {% translate "Users" %}
 {% endblock %}
 
+{% bootstrap_messages %}
 
 {% block content %}
 <table class="table table-striped">
