@@ -29,7 +29,7 @@ test-coverage:
 selfcheck:
 	poetry check
 
-check: selfcheck lint
+check: selfcheck lint test
 
 start:
 	poetry run python manage.py runserver
