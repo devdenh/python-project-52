@@ -58,7 +58,6 @@ class UserDelete(LoginRequiredMixin,
     model = User
     template_name = 'users/delete.html'
     success_url = reverse_lazy('users:index')
-    login_url = 'login'
     success_message = DELETE_SUCCESS_MESSAGE
 
     def dispatch(self, request, *args, **kwargs):

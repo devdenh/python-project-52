@@ -5,7 +5,10 @@
     "fields": {
       "username": "Johnbaz",
       "first_name": "John",
-      "last_name": "Baz"
+      "last_name": "Baz",
+      "password1": "newpasswordkkkk",
+      "password2": "newpasswordkkkk"
+
     }
   },
   {
@@ -14,7 +17,9 @@
     "fields": {
       "username": "Foobar",
       "first_name": "Foo",
-      "last_name": "Bar"
+      "last_name": "Bar",
+      "password1": "newpasswordkk",
+      "password2": "newpasswordkk"
     }
   },
   {
@@ -23,7 +28,9 @@
     "fields": {
       "username": "Somedude",
       "first_name": "Some",
-      "last_name": "Dude"
+      "last_name": "Dude",
+      "password1": "newpasswordk",
+      "password2": "newpasswordk"
     }
   }
 ]
