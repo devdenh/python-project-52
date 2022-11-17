@@ -9,7 +9,7 @@ class UserTest(TestCase):
 
     @classmethod
     def setUpTestData(cls):
-        cls.test_data = get_fixture_data('test_data.json')
+        cls.test_data = get_fixture_data('users_test_data.json')
 
     def test_index_page(self):
         response = self.client.get(reverse('users:index'))
@@ -24,6 +24,7 @@ class UserTest(TestCase):
                                     self.test_data[0]['fields'])
 
         self.assertRedirects(response, reverse('login'))
+
         user = User.objects.get(
             username=self.test_data[0]['fields']['username']
         )

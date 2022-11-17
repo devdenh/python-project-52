@@ -55,6 +55,7 @@ class UserDelete(LoginRequiredMixin,
                  UserPassesTestMixin,
                  SuccessMessageMixin,
                  DeleteView):
+
     model = User
     template_name = 'users/delete.html'
     success_url = reverse_lazy('users:index')
