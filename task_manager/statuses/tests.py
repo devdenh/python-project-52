@@ -11,18 +11,11 @@ class StatusesTest(TestCase):
     fixtures = ["statuses.json", "users.json"]
     test_data = get_fixture_data('test_data.json')
     user_data = get_fixture_data('users.json')
-    print(test_data)
 
     @classmethod
     def setUpTestData(cls):
-
-        cls.user = User.objects.create_user(
-            cls.user_data[0]['fields']
-        )
+        cls.user = User.objects.first()
         cls.status = Statuses.objects.first()
-        cls.status_new = Statuses.objects.create(
-            **cls.test_data['statuses']['new']
-        )
 
     def test_index_page(self):
         self.client.force_login(self.user)
@@ -41,8 +34,8 @@ class StatusesTest(TestCase):
 
         self.assertRedirects(response, reverse('statuses:index'))
 
-        status = Statuses.objects.get(name=self.status_new.name)
-        self.assertEqual(status.name, self.status_new.name)
+        status = Statuses.objects.get(name=self.test_data['statuses']['new']['name'])
+        self.assertEqual(status.name, self.test_data['statuses']['new']['name'])
 
     def test_update_page(self):
         self.client.force_login(self.user)
@@ -54,20 +47,18 @@ class StatusesTest(TestCase):
         self.client.force_login(self.user)
 
         response = self.client.post(reverse('statuses:update', args=[self.status.pk]),
-                                    self.test_data[0]['fields'])
+                                    self.test_data['statuses']['new'])
 
         self.assertRedirects(response, reverse('statuses:index'))
 
         updated_status = Statuses.objects.get(
-            name=self.status_new.name
+            name=self.test_data['statuses']['new']['name']
         )
-        self.assertEqual(updated_status.name, self.status_new.name)
+        self.assertEqual(updated_status.name, self.test_data['statuses']['new']['name'])
 
     def test_delete_page(self):
         self.client.force_login(self.user)
         response = self.client.get(reverse('statuses:delete', args=[self.status.pk]))
-        request = self.client.get(reverse("statuses:delete", args=[self.status.pk]))
-
 
         self.assertEqual(response.status_code, 200)
 

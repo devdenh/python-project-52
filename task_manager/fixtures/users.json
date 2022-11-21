@@ -3,27 +3,21 @@
     "model": "users.user",
     "pk": 1,
     "fields": {
-      "username": "Johnbaz",
-      "first_name": "John",
-      "last_name": "Baz"
+      "username": "Johnbaz"
     }
   },
   {
     "model": "users.user",
     "pk": 2,
     "fields": {
-      "username": "Foobar",
-      "first_name": "Foo",
-      "last_name": "Bar"
+      "username": "Foobar"
     }
   },
   {
     "model": "users.user",
     "pk": 3,
     "fields": {
-      "username": "Somedude",
-      "first_name": "Some",
-      "last_name": "Dude"
+      "username": "Somedude"
     }
   }
 ]
