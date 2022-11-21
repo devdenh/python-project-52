@@ -1,0 +1,26 @@
+{
+  "users": {
+    "new": {
+      "username": "somename",
+      "first_name": "Some",
+      "last_name": "Name",
+      "password1": "newpasswordk",
+      "password2": "newpasswordk"
+    },
+    "existing": {
+      "username": "Johnbaz",
+      "first_name": "John",
+      "last_name": "Baz",
+      "password1": "newpasswordkkkk",
+      "password2": "newpasswordkkkk"
+    }
+  },
+  "statuses": {
+    "new": {
+      "name": "somestatus"
+    },
+    "existing": {
+      "name": "status1"
+    }
+  }
+}

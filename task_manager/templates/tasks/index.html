@@ -1,0 +1,49 @@
+{% extends 'layouts/base.html' %}
+{% load bootstrap4 %}
+{% load i18n %}
+
+{% block header %}
+{% translate "Tasks" %}
+{% endblock %}
+
+{% bootstrap_messages %}
+
+{% block content %}
+    <a class="nav-link" href="{% url 'tasks:create' %}">{% translate "Create task" %}</a>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>{% translate "id"|upper %}</th>
+      <th>{% translate "name"|capfirst %}</th>
+      <th>{% translate "status"|capfirst %}</th>
+      <th>{% translate "author"|capfirst %}</th>
+      <th>{% translate "executor"|capfirst %}</th>
+      <th>{% translate "created at"|capfirst %}</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for task in object_list %}
+      <tr>
+        <td>
+            <a href="{% url 'tasks:detail' task.pk %}">{{ task.pk }}</a>
+        </td>
+        <td>{{ task.name }}</td>
+        <td>{{ task.status }}</td>
+        <td>{{ task.author }}</td>
+          {% if not task.executor %}
+          <td></td>
+          {% else %}
+          <td>{{ task.executor }}</td>
+          {% endif %}
+        <td>{{ task.created_at|date:"d.m.Y H:i" }}</td>
+        <td>
+          <a href="{% url 'tasks:update' task.pk %}">{% translate "Update" %}</a>
+          <br>
+          <a href="{% url 'tasks:delete' task.pk %}">{% translate "Delete" %}</a>
+        </td>
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

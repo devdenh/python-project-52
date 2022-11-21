@@ -9,7 +9,7 @@ class UserTest(TestCase):
 
     @classmethod
     def setUpTestData(cls):
-        cls.test_data = get_fixture_data('users_test_data.json')
+        cls.test_data = get_fixture_data('users.json')
 
     def test_index_page(self):
         response = self.client.get(reverse('users:index'))

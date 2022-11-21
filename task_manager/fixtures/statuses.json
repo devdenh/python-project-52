@@ -1,13 +1,13 @@
 [
   {
-    "model": "statuses",
+    "model": "statuses.statuses",
     "pk": 1,
     "fields": {
       "name": "status1"
     }
   },
   {
-    "model": "statuses",
+    "model": "statuses.statuses",
     "pk": 2,
     "fields": {
       "name": "status2"
