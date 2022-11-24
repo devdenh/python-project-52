@@ -1,0 +1,16 @@
+[
+  {
+    "model": "labels.label",
+    "pk": 1,
+    "fields": {
+      "name": "label1"
+    }
+  },
+  {
+    "model": "labels.label",
+    "pk": 2,
+    "fields": {
+      "name": "label2"
+    }
+  }
+]
