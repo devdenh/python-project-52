@@ -5,7 +5,7 @@ from django.contrib.messages.views import SuccessMessageMixin
 from django.utils.translation import gettext as _
 from task_manager.statuses.models import Statuses
 from task_manager.statuses.forms import StatusesForm
-from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import DeleteView
 from task_manager.tasks.models import Task
 from django.urls import reverse_lazy
@@ -56,7 +56,7 @@ class StatusDelete(LoginRequiredMixin,
     success_message = DELETE_SUCCESS_MESSAGE
 
     def form_valid(self, form):
-        if Task.objects.filter(status=self.kwargs['pk']):
+        if Task.objects.filter(status_id=self.kwargs['pk']):
             messages.error(self.request, STATUS_USED_MESSAGE)
             return redirect(reverse_lazy('statuses:index'))
         return super().form_valid(form)

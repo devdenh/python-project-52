@@ -22,5 +22,20 @@
     "existing": {
       "name": "status1"
     }
+  },
+  "tasks": {
+    "new": {
+      "name": "sometskk",
+      "description": "descc",
+      "status": 1,
+      "author": 1
+    },
+    "existing": {
+      "name": "qa1",
+      "description": "qa",
+      "status": 1,
+      "author": 1,
+      "executor": 1
+    }
   }
 }

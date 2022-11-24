@@ -1,21 +1,20 @@
 from django.core.exceptions import ObjectDoesNotExist
 from task_manager.statuses.models import Statuses
 from task_manager.users.models import User
-from task_manager.tasks.models import Task
 from django.test import TestCase
 from task_manager.utils import get_fixture_data
 from django.urls import reverse
 
 
 class StatusesTest(TestCase):
-    fixtures = ["statuses.json", "users.json"]
+    fixtures = ["statuses.json", "users.json", "tasks.json"]
     test_data = get_fixture_data('test_data.json')
-    user_data = get_fixture_data('users.json')
 
     @classmethod
     def setUpTestData(cls):
         cls.user = User.objects.first()
         cls.status = Statuses.objects.first()
+        cls.status2 = Statuses.objects.get(pk=2)
 
     def test_index_page(self):
         self.client.force_login(self.user)
@@ -75,3 +74,9 @@ class StatusesTest(TestCase):
 
     def test_bound_delete(self):
         self.client.force_login(self.user)
+        response = self.client.post(reverse(
+            'statuses:delete', args=[self.status2.pk]), follow=True)
+
+        assert Statuses.objects.get(pk=self.status2.pk)
+        message = "You can't delete statuses are still being used by a task"
+        assert response.context['messages']._loaded_data[0].message == message
