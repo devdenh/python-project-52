@@ -4,6 +4,7 @@ from django.views.generic import (
 from django.contrib.messages.views import SuccessMessageMixin
 from django.utils.translation import gettext as _
 from task_manager.tasks.models import Task
+from task_manager.labels.models import Label
 from task_manager.tasks.forms import TaskForm
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.views.generic import DeleteView
@@ -27,6 +28,7 @@ class IndexView(LoginRequiredMixin,
 class DetailTask(DetailView):
     model = Task
     template_name = "tasks/detail.html"
+    extra_context = {"labels": Label.objects.all()}
 
 
 class TaskRegistrate(LoginRequiredMixin,

@@ -63,20 +63,20 @@ class StatusesTest(TestCase):
 
     def test_delete(self):
         self.client.force_login(self.user)
-        response = self.client.post(reverse('labels:delete', args=[self.label.pk]))
+        response = self.client.post(reverse('labels:delete', args=[self.label2.pk]))
 
         self.assertRedirects(response, reverse('labels:index'))
 
         with self.assertRaises(ObjectDoesNotExist):
             Label.objects.get(
-                name=self.label.name
+                name=self.label2.name
             )
 
-    # def test_bound_delete(self):
-    #     self.client.force_login(self.user)
-    #     response = self.client.post(reverse(
-    #         'labels:delete', args=[self.label.pk]), follow=True)
-    #
-    #     assert Label.objects.get(pk=self.label2.pk)
-    #     message = "You can't delete statuses are still being used by a task"
-    #     assert response.context['messages']._loaded_data[0].message == message
+    def test_bound_delete(self):
+        self.client.force_login(self.user)
+        response = self.client.post(reverse(
+            'labels:delete', args=[self.label.pk]), follow=True)
+
+        assert Label.objects.get(pk=self.label.pk)
+        message = "You can't delete labels are still being used"
+        assert response.context['messages']._loaded_data[0].message == message
