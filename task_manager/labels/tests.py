@@ -7,7 +7,7 @@ from django.urls import reverse
 
 
 class StatusesTest(TestCase):
-    fixtures = ["statuses.json", "users.json", "tasks.json", "labels.json"]
+    fixtures = ["statuses.json", "users.json", "labels.json", "tasks.json"]
     test_data = get_fixture_data('test_data.json')
 
     @classmethod
