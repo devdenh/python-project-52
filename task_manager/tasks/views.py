@@ -1,5 +1,5 @@
 from django.views.generic import (
-    ListView, CreateView, UpdateView, DetailView
+    CreateView, UpdateView, DetailView
 )
 from django.contrib.messages.views import SuccessMessageMixin
 from django.utils.translation import gettext as _
