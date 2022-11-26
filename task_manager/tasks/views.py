@@ -7,7 +7,9 @@ from task_manager.tasks.models import Task
 from task_manager.labels.models import Label
 from task_manager.tasks.forms import TaskForm
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
+from task_manager.tasks.forms import FilterForm
 from django.views.generic import DeleteView
+from django_filters.views import FilterView
 from django.urls import reverse_lazy
 from django.contrib import messages
 from django.shortcuts import redirect
@@ -20,9 +22,16 @@ NOT_AUTHOR_MESSAGE = _("Only author can delete this task")
 
 
 class IndexView(LoginRequiredMixin,
-                ListView):
+                FilterView):
     model = Task
     template_name = 'tasks/index.html'
+    filterset_class = FilterForm
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["filter"] = FilterForm(self.request.GET,
+                                       queryset=self.get_queryset())
+        return context
 
 
 class DetailTask(DetailView):

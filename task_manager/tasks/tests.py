@@ -80,3 +80,16 @@ class StatusesTest(TestCase):
         assert Statuses.objects.get(pk=self.task2.pk)
         message = "Only author can delete this task"
         assert response.context['messages']._loaded_data[0].message == message
+
+    def test_filter_page(self):
+        self.client.force_login(self.user)
+        response = self.client.get("/tasks/?executor=2", follow=True)
+
+        self.assertEqual(response.context["object_list"][0], self.task2)
+
+    def test_author_only(self):
+        self.client.force_login(self.user)
+        response = self.client.get("/tasks/?author_only=on",
+                                   follow=True)
+
+        self.assertEqual(response.context["object_list"][0], self.task)
