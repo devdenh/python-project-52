@@ -31,9 +31,9 @@ ROLLBAR_ACCESS_TOKEN = os.getenv("ROLLBAR_ACCESS_TOKEN")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.getenv("DEBUG")
 
-ALLOWED_HOSTS = ['*']
+CSRF_TRUSTED_ORIGINS = ['https://*.railway.app']
 
-IS_RAILWAY = "RAILWAY_ENVIRONMENT" in os.environ
+ALLOWED_HOSTS = ['*']
 
 # Application definition
 
