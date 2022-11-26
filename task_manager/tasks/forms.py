@@ -35,19 +35,19 @@ class TaskForm(forms.ModelForm):
 class FilterForm(django_filters.FilterSet):
 
     status = django_filters.ModelChoiceFilter(
-        field_name=_("Status"),
+        field_name="status",
         queryset=Statuses.objects.all(),
         label=_("Status")
     )
 
     executor = django_filters.ModelChoiceFilter(
-        field_name=_("Executor"),
+        field_name="executor",
         queryset=User.objects.all(),
         label=_("Executor")
     )
 
     label = django_filters.ModelChoiceFilter(
-        field_name=_("Label"),
+        field_name="label",
         queryset=Label.objects.all(),
         label=_("Label")
     )
