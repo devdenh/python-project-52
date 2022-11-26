@@ -14,6 +14,7 @@ from pathlib import Path
 import os
 from dotenv import load_dotenv
 import dj_database_url
+import rollbar
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -28,11 +29,13 @@ load_dotenv()
 SECRET_KEY = os.getenv("SECRET_KEY", "not_empty_key")
 ROLLBAR_ACCESS_TOKEN = os.getenv("ROLLBAR_ACCESS_TOKEN")
 
+
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.getenv('DEBUG', 'False') == 'True'
 
 ALLOWED_HOSTS = ['*']
 
+IS_RAILWAY = "RAILWAY_ENVIRONMENT" in os.environ
 
 # Application definition
 
@@ -71,6 +74,8 @@ ROLLBAR = {
     'root': BASE_DIR,
 }
 
+rollbar.init(**ROLLBAR)
+
 ROOT_URLCONF = "task_manager.urls"
 
 TEMPLATES = [
@@ -102,8 +107,6 @@ DATABASES = {
     }
 }
 
-db_from_env = dj_database_url.config()
-DATABASES['default'].update(db_from_env)
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators

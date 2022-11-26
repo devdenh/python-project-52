@@ -14,11 +14,6 @@ LOGGED_OUT_MESSAGE = _("You are logged out")
 class IndexView(TemplateView):
     template_name = 'index.html'
 
-    def index(request):
-        a = None
-        a.hello()  # Creating an error with an invalid line of code
-        return HttpResponse("Hello, world. You're at the pollapp indexx.")
-
 
 class UserLogin(SuccessMessageMixin, LoginView):
     form_class = UserLoginForm
