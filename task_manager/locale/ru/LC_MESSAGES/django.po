@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-11-26 23:00+0500\n"
+"POT-Creation-Date: 2022-11-26 23:35+0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -83,23 +83,30 @@ msgstr "Статус успешно удалён"
 msgid "You can't delete statuses are still being used by a task"
 msgstr "Невозможно удалить статус, потому что он используется"
 
-#: task_manager/tasks/forms.py:17 task_manager/templates/tasks/detail.html:28
+#: task_manager/tasks/forms.py:17 task_manager/tasks/forms.py:38
+#: task_manager/tasks/forms.py:40 task_manager/templates/tasks/detail.html:28
 msgid "Status"
 msgstr "Статус"
 
-#: task_manager/tasks/forms.py:20 task_manager/templates/tasks/detail.html:24
+#: task_manager/tasks/forms.py:20 task_manager/tasks/forms.py:44
+#: task_manager/tasks/forms.py:46 task_manager/templates/tasks/detail.html:24
 msgid "Executor"
 msgstr "Исполнитель"
 
-#: task_manager/tasks/forms.py:26
+#: task_manager/tasks/forms.py:26 task_manager/tasks/forms.py:50
+#: task_manager/tasks/forms.py:52
 msgid "Label"
 msgstr "Метка"
 
-#: task_manager/tasks/forms.py:43
+#: task_manager/tasks/forms.py:56
+msgid "self_tasks"
+msgstr "Только свои задачи"
+
+#: task_manager/tasks/forms.py:57
 #, fuzzy
 #| msgid "Only author can delete this task"
 msgid "Only author tasks"
-msgstr "Задачу может удалить только её автор."
+msgstr "Только свои задачи"
 
 #: task_manager/tasks/models.py:12
 msgid "Description"

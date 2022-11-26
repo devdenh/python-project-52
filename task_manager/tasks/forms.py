@@ -34,13 +34,28 @@ class TaskForm(forms.ModelForm):
 
 class FilterForm(django_filters.FilterSet):
 
+    status = django_filters.ModelChoiceFilter(
+        field_name=_("Status"),
+        queryset=Statuses.objects.all(),
+        label=_("Status")
+    )
+
+    executor = django_filters.ModelChoiceFilter(
+        field_name=_("Executor"),
+        queryset=User.objects.all(),
+        label=_("Executor")
+    )
+
     label = django_filters.ModelChoiceFilter(
-        queryset=Label.objects.all()
+        field_name=_("Label"),
+        queryset=Label.objects.all(),
+        label=_("Label")
     )
 
     author_only = django_filters.BooleanFilter(
         field_name="self_tasks",
         label=_("Only author tasks"),
+        label_suffix="",
         method="owner_filter",
         widget=forms.CheckboxInput
     )
