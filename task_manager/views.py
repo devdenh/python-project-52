@@ -1,4 +1,5 @@
 from django.contrib.messages.views import SuccessMessageMixin
+from django.http import HttpResponse
 from django.views.generic import TemplateView
 from django.contrib.auth.views import LoginView, LogoutView
 from django.utils.translation import gettext as _
@@ -12,6 +13,11 @@ LOGGED_OUT_MESSAGE = _("You are logged out")
 
 class IndexView(TemplateView):
     template_name = 'index.html'
+
+    def index(request):
+        a = None
+        a.hello()  # Creating an error with an invalid line of code
+        return HttpResponse("Hello, world. You're at the pollapp index.")
 
 
 class UserLogin(SuccessMessageMixin, LoginView):
