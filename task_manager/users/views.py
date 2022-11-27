@@ -46,13 +46,12 @@ class UserUpdate(LoginRequiredMixin,
     success_url = reverse_lazy('users:index')
     success_message = UPDATE_USER_SUCCESS_MESSAGE
 
-    def dispatch(self, request, *args, **kwargs):
-        if self.get_object().id != self.request.user.id:
-            messages.error(request, AUTH_DENIED_MESSAGE)
-        return super().dispatch(request, *args, **kwargs)
-
     def test_func(self):
         return self.get_object().id == self.request.user.id
+
+    def handle_no_permission(self):
+        messages.error(self.request, PERMISSION_DENIED_MESSAGE)
+        return redirect(reverse_lazy('users:index'))
 
 
 class UserDelete(LoginRequiredMixin,
