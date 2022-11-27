@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-11-27 11:39+0500\n"
+"POT-Creation-Date: 2022-11-27 11:53+0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -227,7 +227,7 @@ msgid "Logout"
 msgstr "Выход"
 
 #: task_manager/templates/layouts/base.html:51
-#: task_manager/templates/login.html:12 task_manager/templates/login.html:15
+#: task_manager/templates/login.html:12
 msgid "Login"
 msgstr "Вход"
 
@@ -246,6 +246,10 @@ msgstr "Вы уверены, что хотите удалить "
 #: task_manager/templates/layouts/confirm_delete.html:8
 msgid "Yes, delete"
 msgstr "Да, удалить"
+
+#: task_manager/templates/login.html:15
+msgid "Log in"
+msgstr "Войти"
 
 #: task_manager/templates/statuses/create.html:8
 #: task_manager/templates/statuses/index.html:12
@@ -369,9 +373,6 @@ msgstr "Вы разлогинены"
 #, fuzzy
 #~| msgid "Log in"
 #~ msgid "Log out"
-#~ msgstr "Вход"
-
-#~ msgid "Log in"
 #~ msgstr "Вход"
 
 #~ msgid "self_tasks"
