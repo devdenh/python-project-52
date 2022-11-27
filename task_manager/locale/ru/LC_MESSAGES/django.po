@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-11-27 12:41+0500\n"
+"POT-Creation-Date: 2022-11-27 15:44+0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -34,7 +34,7 @@ msgid "User name"
 msgstr "Имя пользователя"
 
 #: task_manager/forms.py:17 task_manager/forms.py:19
-#: task_manager/users/forms.py:24
+#: task_manager/users/forms.py:36
 msgid "Password"
 msgstr "Пароль"
 
@@ -98,8 +98,8 @@ msgid "Label"
 msgstr "Метка"
 
 #: task_manager/tasks/forms.py:57
-msgid "Только свои задачи"
-msgstr "Only author tasks"
+msgid "Only author tasks"
+msgstr "Только свои задачи"
 
 #: task_manager/tasks/models.py:12
 msgid "Description"
@@ -188,10 +188,9 @@ msgstr "дата создания"
 #: task_manager/templates/tasks/update.html:6
 #: task_manager/templates/tasks/update.html:10
 #: task_manager/templates/users/index.html:30
-#: task_manager/templates/users/update.html:6
 #: task_manager/templates/users/update.html:10
 msgid "Update"
-msgstr "Обновить"
+msgstr "Изменить"
 
 #: task_manager/templates/labels/index.html:31
 #: task_manager/templates/statuses/index.html:31
@@ -320,19 +319,37 @@ msgstr "имя пользователя"
 msgid "full name"
 msgstr "полное имя"
 
-#: task_manager/users/forms.py:15
+#: task_manager/templates/users/update.html:6
+msgid "User update"
+msgstr "Изменение пользователя"
+
+#: task_manager/users/forms.py:9
+msgid ""
+"Обязательное поле. Не более 150 символов. Только буквы, цифры и символы @/./"
+"+/-/_."
+msgstr ""
+
+#: task_manager/users/forms.py:12
+msgid "Ваш пароль должен содержать как минимум 3 символа."
+msgstr ""
+
+#: task_manager/users/forms.py:13
+msgid "Для подтверждения введите, пожалуйста, пароль ещё раз."
+msgstr ""
+
+#: task_manager/users/forms.py:26
 msgid "First name"
 msgstr "Имя"
 
-#: task_manager/users/forms.py:18
+#: task_manager/users/forms.py:29
 msgid "Last name"
 msgstr "Фамилия"
 
-#: task_manager/users/forms.py:21
+#: task_manager/users/forms.py:32
 msgid "User Name"
 msgstr "Имя пользователя"
 
-#: task_manager/users/forms.py:28
+#: task_manager/users/forms.py:44
 msgid "Repeat Password"
 msgstr "Подтверждение пароля"
 
@@ -368,15 +385,23 @@ msgstr "Вы залогинены"
 msgid "You are logged out"
 msgstr "Вы разлогинены"
 
-#, fuzzy
-#~| msgid "Only author can delete this task"
-#~ msgid "Only author tasks"
-#~ msgstr "Только свои задачи"
+#~ msgid "Только свои задачи"
+#~ msgstr "Only author tasks"
+
+#~ msgid ""
+#~ "Required field. Less than 150 symbols. Only letters, numbers and symbols "
+#~ "@/./"
+#~ msgstr ""
+#~ "Обязательное поле. Не более 150 символов. Только буквы, цифры и символы "
+#~ "@/./+/-/_."
+
+#~ msgid "Your password must contains at least 3 symbols."
+#~ msgstr "Ваш пароль должен содержать как минимум 3 символа."
+
+#~ msgid "For confirmation please enter password once again."
+#~ msgstr "Для подтверждения введите, пожалуйста, пароль ещё раз."
 
 #, fuzzy
 #~| msgid "Log in"
 #~ msgid "Log out"
 #~ msgstr "Вход"
-
-#~ msgid "self_tasks"
-#~ msgstr "Только свои задачи"

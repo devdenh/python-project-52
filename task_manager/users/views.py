@@ -4,7 +4,7 @@ from django.views.generic import (
 from django.contrib.messages.views import SuccessMessageMixin
 from django.utils.translation import gettext as _
 from task_manager.users.models import User
-from task_manager.users.forms import UserForm, RegisterUserForm
+from task_manager.users.forms import RegisterUserForm
 from django.contrib.auth import get_user_model
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.views.generic import DeleteView
@@ -41,7 +41,7 @@ class UserUpdate(LoginRequiredMixin,
                  UpdateView):
 
     model = User
-    form_class = UserForm
+    form_class = RegisterUserForm
     template_name = 'users/update.html'
     success_url = reverse_lazy('users:index')
     success_message = UPDATE_USER_SUCCESS_MESSAGE

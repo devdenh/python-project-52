@@ -54,7 +54,7 @@ class FilterForm(django_filters.FilterSet):
 
     author_only = django_filters.BooleanFilter(
         field_name="self_tasks",
-        label=_("Только свои задачи"),
+        label=_("Only author tasks"),
         label_suffix="",
         method="owner_filter",
         widget=forms.CheckboxInput
