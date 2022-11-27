@@ -1,7 +1,6 @@
 from django.contrib.auth.forms import UserCreationForm
 from django.utils.translation import gettext as _
 from django.contrib.auth import get_user_model
-from django.utils.safestring import mark_safe
 from django.utils.html import format_html
 from django import forms
 
