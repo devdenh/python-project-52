@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-11-26 23:42+0500\n"
+"POT-Creation-Date: 2022-11-27 11:39+0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -98,10 +98,8 @@ msgid "Label"
 msgstr "Метка"
 
 #: task_manager/tasks/forms.py:57
-#, fuzzy
-#| msgid "Only author can delete this task"
-msgid "Only author tasks"
-msgstr "Только свои задачи"
+msgid "Только свои задачи"
+msgstr "Only author tasks"
 
 #: task_manager/tasks/models.py:12
 msgid "Description"
@@ -225,14 +223,12 @@ msgid "Tasks"
 msgstr "Задачи"
 
 #: task_manager/templates/layouts/base.html:48
-#, fuzzy
-#| msgid "Log in"
-msgid "Log out"
-msgstr "Вход"
+msgid "Logout"
+msgstr "Выход"
 
 #: task_manager/templates/layouts/base.html:51
 #: task_manager/templates/login.html:12 task_manager/templates/login.html:15
-msgid "Log in"
+msgid "Login"
 msgstr "Вход"
 
 #: task_manager/templates/layouts/base.html:54
@@ -364,6 +360,19 @@ msgstr "Вы залогинены"
 #: task_manager/views.py:10
 msgid "You are logged out"
 msgstr "Вы разлогинены"
+
+#, fuzzy
+#~| msgid "Only author can delete this task"
+#~ msgid "Only author tasks"
+#~ msgstr "Только свои задачи"
+
+#, fuzzy
+#~| msgid "Log in"
+#~ msgid "Log out"
+#~ msgstr "Вход"
+
+#~ msgid "Log in"
+#~ msgstr "Вход"
 
 #~ msgid "self_tasks"
 #~ msgstr "Только свои задачи"
