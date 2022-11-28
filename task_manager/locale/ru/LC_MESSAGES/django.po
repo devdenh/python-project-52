@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-11-28 10:58+0500\n"
+"POT-Creation-Date: 2022-11-28 11:17+0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -138,10 +138,10 @@ msgstr "Создать"
 
 #: task_manager/templates/labels/delete.html:5
 msgid "Delete label"
-msgstr "Удалить задачу"
+msgstr "Удаление метки"
 
-#: task_manager/templates/labels/index.html:6
-#: task_manager/templates/layouts/base.html:39
+#: task_manager/templates/labels/index.html:8
+#: task_manager/templates/layouts/base.html:36
 msgid "Labels"
 msgstr "Метки"
 
@@ -166,7 +166,6 @@ msgid "created at"
 msgstr "дата создания"
 
 #: task_manager/templates/labels/index.html:29
-#: task_manager/templates/labels/update.html:6
 #: task_manager/templates/labels/update.html:10
 #: task_manager/templates/statuses/index.html:29
 #: task_manager/templates/statuses/update.html:10
@@ -187,6 +186,10 @@ msgstr "Изменить"
 msgid "Delete"
 msgstr "Удалить"
 
+#: task_manager/templates/labels/update.html:6
+msgid "Update label"
+msgstr "Изменение метки"
+
 #: task_manager/templates/layouts/base.html:14
 #: task_manager/templates/layouts/base.html:20
 msgid "Task manager"
@@ -202,7 +205,7 @@ msgstr "Пользователи"
 msgid "Statuses"
 msgstr "Статусы"
 
-#: task_manager/templates/layouts/base.html:36
+#: task_manager/templates/layouts/base.html:39
 #: task_manager/templates/tasks/index.html:6
 msgid "Tasks"
 msgstr "Задачи"
@@ -220,7 +223,7 @@ msgstr "Вход"
 msgid "Sing up"
 msgstr "Регистрация"
 
-#: task_manager/templates/layouts/base.html:78
+#: task_manager/templates/layouts/base.html:80
 msgid "Hexlet"
 msgstr "Хекслет"
 
