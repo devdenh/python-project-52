@@ -79,3 +79,6 @@ class StatusesTest(TestCase):
 
         assert Statuses.objects.get(pk=self.status2.pk)
         assert response.context['messages']._loaded_data[0].message
+
+    def text_as_hexlet(self):
+        self.client.force_login(self.user)

@@ -1,6 +1,7 @@
 from django.contrib.auth.forms import UserCreationForm
 from django.utils.translation import gettext as _
 from django.contrib.auth import get_user_model
+from django.core.validators import MinLengthValidator
 from django.utils.html import format_html
 from django import forms
 
@@ -10,6 +11,8 @@ USERNAME_FIELD_SESCRIPTION = _("Обязательное поле. "
                                "Только буквы, цифры и символы @/./+/-/_.")
 PASSWORD_REQUIREMENTS_MESSAGE = _("Ваш пароль должен содержать как минимум 3 символа.")
 REPEAT_PASSWORD_MESSAGE = _("Для подтверждения введите, пожалуйста, пароль ещё раз.")
+SHORT_PASSWORD_ERROR = _("Введённый пароль слишком короткий. "
+                         "Он должен содержать как минимум 3 символа.")
 
 
 class RegisterUserForm(UserCreationForm):
@@ -33,14 +36,16 @@ class RegisterUserForm(UserCreationForm):
                                help_text=USERNAME_FIELD_SESCRIPTION)
 
     password1 = forms.CharField(label=_('Password'),
+                                validators=[MinLengthValidator(3, SHORT_PASSWORD_ERROR),],
                                 required=True,
                                 help_text=PASSWORD_REQUIREMENTS_MESSAGE,
                                 widget=forms.PasswordInput(
-                                    attrs={'class': 'form-input',
-                                           "help_text": PASSWORD_REQUIREMENTS_MESSAGE}),
+                                    attrs={'class': 'form-input'}),
                                 ),
 
     password2 = forms.CharField(label=_('Repeat Password'),
+                                error_messages={"required": SHORT_PASSWORD_ERROR},
+                                validators=[MinLengthValidator(3, SHORT_PASSWORD_ERROR),],
                                 required=True,
                                 widget=forms.PasswordInput(attrs={'class': 'form-input'}))
 

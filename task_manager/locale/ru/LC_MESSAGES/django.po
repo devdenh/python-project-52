@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-11-27 15:44+0500\n"
+"POT-Creation-Date: 2022-11-28 10:07+0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -34,7 +34,7 @@ msgid "User name"
 msgstr "Имя пользователя"
 
 #: task_manager/forms.py:17 task_manager/forms.py:19
-#: task_manager/users/forms.py:36
+#: task_manager/users/forms.py:38
 msgid "Password"
 msgstr "Пароль"
 
@@ -181,7 +181,6 @@ msgstr "дата создания"
 #: task_manager/templates/labels/update.html:6
 #: task_manager/templates/labels/update.html:10
 #: task_manager/templates/statuses/index.html:29
-#: task_manager/templates/statuses/update.html:6
 #: task_manager/templates/statuses/update.html:10
 #: task_manager/templates/tasks/detail.html:46
 #: task_manager/templates/tasks/index.html:53
@@ -257,6 +256,10 @@ msgstr "Создать статус"
 #: task_manager/templates/statuses/delete.html:5
 msgid "Delete status"
 msgstr "Удалить статус"
+
+#: task_manager/templates/statuses/update.html:6
+msgid "Status update"
+msgstr "Изменение статуса"
 
 #: task_manager/templates/tasks/create.html:8
 #: task_manager/templates/tasks/index.html:12
@@ -337,19 +340,24 @@ msgstr ""
 msgid "Для подтверждения введите, пожалуйста, пароль ещё раз."
 msgstr ""
 
-#: task_manager/users/forms.py:26
+#: task_manager/users/forms.py:14
+msgid ""
+"Введённый пароль слишком короткий. Он должен содержать как минимум 3 символа."
+msgstr ""
+
+#: task_manager/users/forms.py:28
 msgid "First name"
 msgstr "Имя"
 
-#: task_manager/users/forms.py:29
+#: task_manager/users/forms.py:31
 msgid "Last name"
 msgstr "Фамилия"
 
-#: task_manager/users/forms.py:32
+#: task_manager/users/forms.py:34
 msgid "User Name"
 msgstr "Имя пользователя"
 
-#: task_manager/users/forms.py:44
+#: task_manager/users/forms.py:46
 msgid "Repeat Password"
 msgstr "Подтверждение пароля"
 
