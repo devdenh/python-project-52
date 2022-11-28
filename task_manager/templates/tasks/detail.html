@@ -36,7 +36,7 @@
                     <div class="col font-weight-bold">{% translate "Labels:"%}</div>
                 </div>
                 <ul>
-                    {% for label in labels %}
+                    {% for label in task.label.all %}
                     <li>{{ label.name }}</li>
                     {% endfor %}
                 </ul>
