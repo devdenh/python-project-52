@@ -44,26 +44,19 @@ msgid "Name"
 msgstr "Имя"
 
 #: task_manager/labels/views.py:16
-#, fuzzy
-#| msgid "Task created Successfully"
 msgid "Label created Successfully"
 msgstr "Задача успешно создана"
 
 #: task_manager/labels/views.py:17
-#, fuzzy
-#| msgid "Task updated Successfully"
 msgid "Label updated Successfully"
 msgstr "Задача успешно изменена"
 
 #: task_manager/labels/views.py:18
-#, fuzzy
-#| msgid "Task deleted Successfully"
 msgid "Label deleted Successfully"
 msgstr "Задача успешно удалена"
 
 #: task_manager/labels/views.py:19
-#, fuzzy
-#| msgid "You can't delete statuses are still being used by a task"
+
 msgid "You can't delete labels are still being used"
 msgstr "Невозможно удалить статус, потому что он используется"
 
@@ -135,10 +128,8 @@ msgstr "Узнать больше"
 
 #: task_manager/templates/labels/create.html:8
 #: task_manager/templates/labels/index.html:12
-#, fuzzy
-#| msgid "Created at"
 msgid "Create label"
-msgstr "Дата создания"
+msgstr "Создать метку"
 
 #: task_manager/templates/labels/create.html:11
 #: task_manager/templates/statuses/create.html:11
@@ -147,8 +138,6 @@ msgid "Create"
 msgstr "Создать"
 
 #: task_manager/templates/labels/delete.html:5
-#, fuzzy
-#| msgid "Delete task"
 msgid "Delete label"
 msgstr "Удалить задачу"
 
@@ -393,23 +382,3 @@ msgstr "Вы залогинены"
 msgid "You are logged out"
 msgstr "Вы разлогинены"
 
-#~ msgid "Только свои задачи"
-#~ msgstr "Only author tasks"
-
-#~ msgid ""
-#~ "Required field. Less than 150 symbols. Only letters, numbers and symbols "
-#~ "@/./"
-#~ msgstr ""
-#~ "Обязательное поле. Не более 150 символов. Только буквы, цифры и символы "
-#~ "@/./+/-/_."
-
-#~ msgid "Your password must contains at least 3 symbols."
-#~ msgstr "Ваш пароль должен содержать как минимум 3 символа."
-
-#~ msgid "For confirmation please enter password once again."
-#~ msgstr "Для подтверждения введите, пожалуйста, пароль ещё раз."
-
-#, fuzzy
-#~| msgid "Log in"
-#~ msgid "Log out"
-#~ msgstr "Вход"
