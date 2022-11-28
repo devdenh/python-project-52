@@ -26,7 +26,7 @@ class TaskForm(forms.ModelForm):
                                       queryset=User.objects.all(),
                                       required=False)
 
-    label = forms.ModelMultipleChoiceField(label=_("Label"),
+    label = forms.ModelMultipleChoiceField(label=_("Labels"),
                                            queryset=Label.objects.all(),
                                            required=False)
 
