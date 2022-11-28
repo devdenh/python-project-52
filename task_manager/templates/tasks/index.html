@@ -37,10 +37,10 @@
   <tbody>
     {% for task in object_list %}
       <tr>
+        <td>{{ task.id }}</td>
         <td>
-            <a href="{% url 'tasks:detail' task.pk %}">{{ task.pk }}</a>
+            <a href="{% url 'tasks:detail' task.id %}">{{ task.name }}</a>
         </td>
-        <td>{{ task.name }}</td>
         <td>{{ task.status }}</td>
         <td>{{ task.author }}</td>
           {% if not task.executor %}
