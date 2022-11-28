@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-11-28 10:07+0500\n"
+"POT-Creation-Date: 2022-11-28 10:58+0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -34,7 +34,7 @@ msgid "User name"
 msgstr "Имя пользователя"
 
 #: task_manager/forms.py:17 task_manager/forms.py:19
-#: task_manager/users/forms.py:38
+#: task_manager/users/forms.py:37
 msgid "Password"
 msgstr "Пароль"
 
@@ -45,20 +45,19 @@ msgstr "Имя"
 
 #: task_manager/labels/views.py:16
 msgid "Label created Successfully"
-msgstr "Задача успешно создана"
+msgstr "Метка успешно создана"
 
 #: task_manager/labels/views.py:17
 msgid "Label updated Successfully"
-msgstr "Задача успешно изменена"
+msgstr "Метка успешно изменена"
 
 #: task_manager/labels/views.py:18
 msgid "Label deleted Successfully"
-msgstr "Задача успешно удалена"
+msgstr "Метка успешно удалена"
 
 #: task_manager/labels/views.py:19
-
 msgid "You can't delete labels are still being used"
-msgstr "Невозможно удалить статус, потому что он используется"
+msgstr "Невозможно удалить метку, потому что она используется"
 
 #: task_manager/statuses/views.py:16
 msgid "Status created Successfully"
@@ -315,38 +314,38 @@ msgstr "полное имя"
 msgid "User update"
 msgstr "Изменение пользователя"
 
-#: task_manager/users/forms.py:9
+#: task_manager/users/forms.py:8
 msgid ""
 "Обязательное поле. Не более 150 символов. Только буквы, цифры и символы @/./"
 "+/-/_."
 msgstr ""
 
-#: task_manager/users/forms.py:12
+#: task_manager/users/forms.py:11
 msgid "Ваш пароль должен содержать как минимум 3 символа."
 msgstr ""
 
-#: task_manager/users/forms.py:13
+#: task_manager/users/forms.py:12
 msgid "Для подтверждения введите, пожалуйста, пароль ещё раз."
 msgstr ""
 
-#: task_manager/users/forms.py:14
+#: task_manager/users/forms.py:13
 msgid ""
 "Введённый пароль слишком короткий. Он должен содержать как минимум 3 символа."
 msgstr ""
 
-#: task_manager/users/forms.py:28
+#: task_manager/users/forms.py:27
 msgid "First name"
 msgstr "Имя"
 
-#: task_manager/users/forms.py:31
+#: task_manager/users/forms.py:30
 msgid "Last name"
 msgstr "Фамилия"
 
-#: task_manager/users/forms.py:34
+#: task_manager/users/forms.py:33
 msgid "User Name"
 msgstr "Имя пользователя"
 
-#: task_manager/users/forms.py:46
+#: task_manager/users/forms.py:44
 msgid "Repeat Password"
 msgstr "Подтверждение пароля"
 
@@ -381,4 +380,3 @@ msgstr "Вы залогинены"
 #: task_manager/views.py:10
 msgid "You are logged out"
 msgstr "Вы разлогинены"
-

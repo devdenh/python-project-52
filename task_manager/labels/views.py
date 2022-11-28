@@ -16,7 +16,7 @@ from django.shortcuts import redirect
 REGISTRATION_SUCCESS_MESSAGE = _("Label created Successfully")
 UPDATE_SUCCESS_MESSAGE = _("Label updated Successfully")
 DELETE_SUCCESS_MESSAGE = _("Label deleted Successfully")
-STATUS_USED_MESSAGE = _("You can't delete labels are still being used")
+LABEL_USED_MESSAGE = _("You can't delete labels are still being used")
 
 
 class IndexView(LoginRequiredMixin,
@@ -57,6 +57,6 @@ class LabelDelete(LoginRequiredMixin,
 
     def form_valid(self, form):
         if Task.objects.filter(label=self.kwargs['pk']):
-            messages.error(self.request, STATUS_USED_MESSAGE)
+            messages.error(self.request, LABEL_USED_MESSAGE)
             return redirect(reverse_lazy('labels:index'))
         return super().form_valid(form)
