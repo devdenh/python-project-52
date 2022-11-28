@@ -2,11 +2,11 @@
 {% load bootstrap4 %}
 {% load i18n %}
 
+{% bootstrap_messages %}
+
 {% block header %}
 {% translate "Labels" %}
 {% endblock %}
-
-{% bootstrap_messages %}
 
 {% block content %}
     <a class="nav-link" href="{% url 'labels:create' %}">{% translate "Create label" %}</a>

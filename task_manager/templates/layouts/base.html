@@ -33,10 +33,10 @@
               <a class="nav-link text-white" href={% url 'statuses:index' %}>{% translate "Statuses" %}</a>
             </li>
             <li class="nav-item ">
-              <a class="nav-link text-white" href={% url 'tasks:index' %}>{% translate "Tasks" %}</a>
+              <a class="nav-link text-white" href={% url 'labels:index' %}>{% translate "Labels" %}</a>
             </li>
             <li class="nav-item ">
-              <a class="nav-link text-white" href={% url 'labels:index' %}>{% translate "Labels" %}</a>
+              <a class="nav-link text-white" href={% url 'tasks:index' %}>{% translate "Tasks" %}</a>
             </li>
 
             {% endif %}
@@ -62,11 +62,13 @@
   <div class="jumbotron">
     <div class="container">
 
+    {% bootstrap_messages %}
+
       <h1>
         {% block header %}
         {% endblock %}
       </h1>
-{% bootstrap_messages %}
+
     {% block content %}{% endblock %}
 
     </div>
