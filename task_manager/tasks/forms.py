@@ -22,7 +22,7 @@ class TaskForm(forms.ModelForm):
 
     executor = forms.ModelChoiceField(label=_("Executor"),
                                       initial="",
-                                      empty_label="",
+                                      empty_label="---------",
                                       queryset=User.objects.all(),
                                       required=False)
 
