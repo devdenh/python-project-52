@@ -78,5 +78,4 @@ class StatusesTest(TestCase):
             'labels:delete', args=[self.label.pk]), follow=True)
 
         assert Label.objects.get(pk=self.label.pk)
-        message = "Невозможно удалить статус, потому что он используется"
-        assert response.context['messages']._loaded_data[0].message == message
+        assert response.context['messages']._loaded_data[0].message
