@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-11-28 11:52+0500\n"
+"POT-Creation-Date: 2022-11-28 12:09+0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -171,7 +171,6 @@ msgstr "дата создания"
 #: task_manager/templates/statuses/update.html:10
 #: task_manager/templates/tasks/detail.html:46
 #: task_manager/templates/tasks/index.html:53
-#: task_manager/templates/tasks/update.html:6
 #: task_manager/templates/tasks/update.html:10
 #: task_manager/templates/users/index.html:30
 #: task_manager/templates/users/update.html:10
@@ -249,7 +248,7 @@ msgid "Delete status"
 msgstr "Удалить статус"
 
 #: task_manager/templates/statuses/update.html:6
-msgid "Status update"
+msgid "Update status"
 msgstr "Изменение статуса"
 
 #: task_manager/templates/tasks/create.html:8
@@ -292,6 +291,10 @@ msgstr "автор"
 #: task_manager/templates/tasks/index.html:32
 msgid "executor"
 msgstr "исполнитель"
+
+#: task_manager/templates/tasks/update.html:6
+msgid "Update task"
+msgstr "Изменение задачи"
 
 #: task_manager/templates/users/create.html:8
 msgid "Sign up"
@@ -383,3 +386,4 @@ msgstr "Вы залогинены"
 #: task_manager/views.py:10
 msgid "You are logged out"
 msgstr "Вы разлогинены"
+
