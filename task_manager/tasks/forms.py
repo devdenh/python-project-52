@@ -21,9 +21,11 @@ class TaskForm(forms.ModelForm):
                                     required=True)
 
     executor = forms.ModelChoiceField(label=_("Executor"),
+                                      initial="---------",
                                       empty_label="---------",
                                       queryset=User.objects.all(),
-                                      required=False)
+                                      required=False,
+                                      widget=forms.Select())
 
     label = forms.ModelMultipleChoiceField(label=_("Labels"),
                                            queryset=Label.objects.all(),
