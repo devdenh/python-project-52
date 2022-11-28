@@ -12,10 +12,13 @@ class TaskForm(forms.ModelForm):
     name = forms.CharField(label=_("Name"),
                            required=True)
 
-    description = forms.Textarea()
+    description = forms.CharField(label=_("Description"),
+                                  required=False,
+                                  widget=forms.Textarea())
 
     status = forms.ModelChoiceField(label=_("Status"),
-                                    queryset=Statuses.objects.all())
+                                    queryset=Statuses.objects.all(),
+                                    required=True)
 
     executor = forms.ModelChoiceField(label=_("Executor"),
                                       initial="",
