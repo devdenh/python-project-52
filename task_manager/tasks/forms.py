@@ -21,7 +21,6 @@ class TaskForm(forms.ModelForm):
                                     required=True)
 
     executor = forms.ModelChoiceField(label=_("Executor"),
-                                      initial="",
                                       empty_label="---------",
                                       queryset=User.objects.all(),
                                       required=False)
