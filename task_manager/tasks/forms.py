@@ -27,15 +27,16 @@ class TaskForm(forms.ModelForm):
                                       required=False,
                                       widget=forms.Select())
 
-    label = forms.ModelMultipleChoiceField(label=_("Labels"),
-                                           initial="",
+    labels = forms.ModelMultipleChoiceField(label=_("Labels"),
+                                           label_suffix="",
+                                           initial=None,
+                                           show_hidden_initial=False,
                                            queryset=Label.objects.all(),
-                                           required=False,
-                                           blank=True)
+                                           required=False)
 
     class Meta:
         model = Task
-        fields = ["name", "description", "status", "executor", "label"]
+        fields = ["name", "description", "status", "executor", "labels"]
 
 
 class FilterForm(django_filters.FilterSet):
