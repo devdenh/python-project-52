@@ -14,7 +14,7 @@ class Task(models.Model):
     author = models.ForeignKey(User, on_delete=models.PROTECT, related_name="author", null=True)
     executor = models.ForeignKey(User, on_delete=models.PROTECT, related_name="executor", null=True)
     created_at = models.DateTimeField(default=timezone.now)
-    label = models.ManyToManyField(Label)
+    labels = models.ManyToManyField(Label)
 
     def get_absolute_url(self):
         return reverse_lazy('tasks:index')
