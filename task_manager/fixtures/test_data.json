@@ -29,7 +29,7 @@
       "description": "descc",
       "status": 1,
       "author": 1,
-      "label": []
+      "labels": []
     },
     "existing": {
       "name": "qa1",
@@ -37,7 +37,7 @@
       "status": 1,
       "author": 1,
       "executor": 1,
-      "label": [1, 2]
+      "labels": [1, 2]
     }
   },
     "labels": {

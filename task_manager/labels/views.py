@@ -56,7 +56,7 @@ class LabelDelete(LoginRequiredMixin,
     success_message = DELETE_SUCCESS_MESSAGE
 
     def form_valid(self, form):
-        if Task.objects.filter(label=self.kwargs['pk']):
+        if Task.objects.filter(labels=self.kwargs['pk']):
             messages.error(self.request, LABEL_USED_MESSAGE)
             return redirect(reverse_lazy('labels:index'))
         return super().form_valid(form)
