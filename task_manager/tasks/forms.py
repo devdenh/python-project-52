@@ -54,7 +54,7 @@ class FilterForm(django_filters.FilterSet):
     )
 
     label = django_filters.ModelChoiceFilter(
-        field_name="label",
+        field_name="labels",
         queryset=Label.objects.all(),
         label=_("Label")
     )
