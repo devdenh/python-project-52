@@ -28,11 +28,11 @@ class TaskForm(forms.ModelForm):
                                       widget=forms.Select())
 
     labels = forms.ModelMultipleChoiceField(label=_("Labels"),
-                                           label_suffix="",
-                                           initial=None,
-                                           show_hidden_initial=False,
-                                           queryset=Label.objects.all(),
-                                           required=False)
+                                            label_suffix="",
+                                            initial=None,
+                                            show_hidden_initial=False,
+                                            queryset=Label.objects.all(),
+                                            required=False)
 
     class Meta:
         model = Task
