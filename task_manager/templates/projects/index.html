@@ -1,0 +1,41 @@
+{% extends 'layouts/base.html' %}
+{% load bootstrap4 %}
+{% load i18n %}
+
+{% block header %}
+Проект
+{% endblock %}
+
+{% bootstrap_messages %}
+
+{% block content %}
+    <a class="nav-link" href="{% url 'projects:create' %}">Добавить проект</a>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>{% translate "id"|upper %}</th>
+      <th>Обозначение</th>
+      <th>Наименование</th>
+      <th>Номер изменений</th>
+      <th>Дата выдачи</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for project in object_list %}
+      <tr>
+        <td>{{ project.id }}</td>
+        <td>{{ project.designation }}</td>
+        <td>{{ project.name }}</td>
+        <td>{{ project.change_number }}</td>
+        <td>{{ project.issue_date }}</td>
+        <td>
+          <a href="{% url 'projects:update' project.pk %}">{% translate "Update" %}</a>
+          <br>
+          <a href="{% url 'projects:delete' project.pk %}">{% translate "Delete" %}</a>
+        </td>
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

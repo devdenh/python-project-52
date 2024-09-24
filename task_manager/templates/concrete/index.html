@@ -1,0 +1,39 @@
+ {% extends 'layouts/base.html' %}
+{% load bootstrap4 %}
+{% load i18n %}
+
+{% block header %}
+Бетон
+{% endblock %}
+
+{% bootstrap_messages %}
+
+{% block content %}
+    <a class="nav-link" href="{% url 'concrete:create' %}">"Добавить бетон"</a>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>{% translate "id"|upper %}</th>
+      <th>Класс</th>
+      <th>Марка</th>
+      <th>Прочность</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for concrete in object_list %}
+      <tr>
+        <td>{{ concrete.id }}</td>
+        <td>{{ concrete.klas }}</td>
+        <td>{{ concrete.marka }}</td>
+        <td>{{ concrete.strength_mpa }}</td>
+        <td>
+          <a href="{% url 'concrete:update' concrete.pk %}">{% translate "Update" %}</a>
+          <br>
+          <a href="{% url 'concrete:delete' concrete.pk %}">{% translate "Delete" %}</a>
+        </td>
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

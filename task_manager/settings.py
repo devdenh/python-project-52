@@ -53,7 +53,9 @@ INSTALLED_APPS = [
     "task_manager.users",
     "task_manager.statuses",
     "task_manager.tasks",
-    "task_manager.labels"
+    "task_manager.labels",
+    "task_manager.concrete",
+    "task_manager.projects"
 ]
 
 MIDDLEWARE = [
@@ -103,8 +105,12 @@ WSGI_APPLICATION = "task_manager.wsgi.application"
 
 DATABASES = {
     "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'test',
+        'USER': 'devden',
+        'PASSWORD': 'asdfPp1a',
+        'HOST': 'localhost',
+        'PORT': '5432',
     }
 }
 
