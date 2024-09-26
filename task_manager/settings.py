@@ -33,7 +33,10 @@ ROLLBAR_ACCESS_TOKEN = os.getenv("ROLLBAR_ACCESS_TOKEN")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.getenv("DEBUG")
 
-CSRF_TRUSTED_ORIGINS = ['https://*.railway.app']
+CSRF_TRUSTED_ORIGINS = [
+    'https://*.railway.app',
+    'https://daf7-176-226-182-188.ngrok-free.app'
+]
 
 ALLOWED_HOSTS = ['*']
 
@@ -55,7 +58,12 @@ INSTALLED_APPS = [
     "task_manager.tasks",
     "task_manager.labels",
     "task_manager.concrete",
-    "task_manager.projects"
+    "task_manager.projects",
+    "task_manager.sections",
+    "task_manager.columns",
+    "task_manager.walls",
+    "task_manager.slabs",
+    "task_manager.transitions",
 ]
 
 MIDDLEWARE = [

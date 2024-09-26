@@ -1,0 +1,38 @@
+{% extends 'layouts/base.html' %}
+{% load bootstrap4 %}
+{% load i18n %}
+
+{% block header %}
+Лестничные площадки
+{% endblock %}
+
+{% bootstrap_messages %}
+
+{% block content %}
+    <a class="nav-link" href="{% url 'transitions:create' %}">Добавить лестничную площадку</a>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>{% translate "id"|upper %}</th>
+      <th>Наименование лестничной площадки</th>
+      <th>Объем</th>
+      <th>Толщина</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for transition in object_list %}
+      <tr>
+        <td>{{ transition.id }}</td>
+        <td>{{ transition.volume }}</td>
+        <td>{{ transition.thickness }}</td>
+        <td>
+          <a href="{% url 'transitions:update' transition.pk %}">{% translate "Update" %}</a>
+          <br>
+          <a href="{% url 'transitions:delete' transition.pk %}">{% translate "Delete" %}</a>
+        </td>
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

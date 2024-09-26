@@ -27,5 +27,10 @@ urlpatterns = [
     path("tasks/", include("task_manager.tasks.urls")),
     path("labels/", include("task_manager.labels.urls")),
     path("concrete/", include("task_manager.concrete.urls")),
-    path("projects/", include("task_manager.projects.urls"))
+    path("projects/", include("task_manager.projects.urls")),
+    path("sections/", include("task_manager.sections.urls")),
+    path("columns/", include("task_manager.columns.urls")),
+    path("walls/", include("task_manager.walls.urls")),
+    path("slabs/", include("task_manager.slabs.urls")),
+    path("transitions/", include("task_manager.transitions.urls"))
 ]

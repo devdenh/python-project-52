@@ -1,0 +1,10 @@
+{% extends 'layouts/form.html' %}
+{% load bootstrap4 %}
+{% load i18n %}
+
+{% block header %}
+Обновить стену
+{% endblock %}
+
+{% bootstrap_messages %}
+{% block button_value %}{% translate "Update" %}{% endblock %}

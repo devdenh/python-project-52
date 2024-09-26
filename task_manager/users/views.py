@@ -53,6 +53,11 @@ class UserUpdate(LoginRequiredMixin,
         messages.error(self.request, PERMISSION_DENIED_MESSAGE)
         return redirect(reverse_lazy('users:index'))
 
+    def get_form_kwargs(self):
+        kwargs = super().get_form_kwargs()
+        kwargs['is_update'] = True  # Передаем флаг is_update в форму
+        return kwargs
+
 
 class UserDelete(LoginRequiredMixin,
                  SuccessMessageMixin,

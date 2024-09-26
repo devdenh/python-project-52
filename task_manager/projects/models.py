@@ -2,7 +2,7 @@ from django.db import models
 from django.urls import reverse_lazy
 
 
-class Projects(models.Model):
+class Project(models.Model):
     designation = models.CharField(max_length=100)  # Обозначение
     name = models.CharField(max_length=255)         # Наименование
     change_number = models.FloatField()             # Номер изменений

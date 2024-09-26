@@ -6,7 +6,7 @@ from django.views.generic import (
 )
 
 from task_manager.projects.forms import ProjectsForm
-from task_manager.projects.models import Projects
+from task_manager.projects.models import Project
 
 
 REGISTRATION_SUCCESS_MESSAGE = "Project created Successfully"
@@ -17,7 +17,7 @@ LABEL_USED_MESSAGE = "You can't delete Project are still being used"
 
 class IndexView(LoginRequiredMixin,
                 ListView):
-    model = Projects
+    model = Project
     template_name = 'projects/index.html'
 
 
@@ -35,7 +35,7 @@ class ProjectsUpdate(LoginRequiredMixin,
                   SuccessMessageMixin,
                   UpdateView):
 
-    model = Projects
+    model = Project
     form_class = ProjectsForm
     template_name = 'projects/update.html'
     success_url = reverse_lazy('projects:index')
@@ -46,7 +46,7 @@ class ProjectsDelete(LoginRequiredMixin,
                   SuccessMessageMixin,
                   DeleteView):
 
-    model = Projects
+    model = Project
     template_name = 'projects/delete.html'
     success_url = reverse_lazy('projects:index')
     success_message = DELETE_SUCCESS_MESSAGE

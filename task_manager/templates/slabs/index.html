@@ -1,0 +1,38 @@
+{% extends 'layouts/base.html' %}
+{% load bootstrap4 %}
+{% load i18n %}
+
+{% block header %}
+Перекрытия
+{% endblock %}
+
+{% bootstrap_messages %}
+
+{% block content %}
+    <a class="nav-link" href="{% url 'slabs:create' %}">Добавить перекрытие</a>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>{% translate "id"|upper %}</th>
+      <th>Наименование перекрытия</th>
+      <th>Объем</th>
+      <th>Толщина</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for slab in object_list %}
+      <tr>
+        <td>{{ slab.id }}</td>
+        <td>{{ slab.volume }}</td>
+        <td>{{ slab.thickness }}</td>
+        <td>
+          <a href="{% url 'slabs:update' slab.pk %}">{% translate "Update" %}</a>
+          <br>
+          <a href="{% url 'slabs:delete' slab.pk %}">{% translate "Delete" %}</a>
+        </td>
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

@@ -1,12 +1,12 @@
 from django import forms
 
-from task_manager.projects.models import Projects
+from task_manager.projects.models import Project
 
 
 class ProjectsForm(forms.ModelForm):
 
     class Meta:
-        model = Projects
+        model = Project
         fields = ['designation', 'name', 'change_number', 'issue_date']
         labels = {
             'designation': 'Обозначение',

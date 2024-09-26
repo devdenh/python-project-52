@@ -1,0 +1,39 @@
+{% extends 'layouts/base.html' %}
+{% load bootstrap4 %}
+{% load i18n %}
+
+{% block header %}
+Колонны
+{% endblock %}
+
+{% bootstrap_messages %}
+
+{% block content %}
+    <a class="nav-link" href="{% url 'columns:create' %}">Добавить колонну</a>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>{% translate "id"|upper %}</th>
+      <th>Наименование колонны</th>
+      <th>Длина в сечении</th>
+      <th>Ширина в сечении</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for column in object_list %}
+      <tr>
+        <td>{{ column.id }}</td>
+        <td>{{ column.name }}</td>
+        <td>{{ column.length }}</td>
+        <td>{{ column.width }}</td>
+        <td>
+          <a href="{% url 'columns:update' column.pk %}">{% translate "Update" %}</a>
+          <br>
+          <a href="{% url 'columns:delete' column.pk %}">{% translate "Delete" %}</a>
+        </td>
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

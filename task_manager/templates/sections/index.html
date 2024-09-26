@@ -1,0 +1,41 @@
+{% extends 'layouts/base.html' %}
+{% load bootstrap4 %}
+{% load i18n %}
+
+{% block header %}
+Секции
+{% endblock %}
+
+{% bootstrap_messages %}
+
+{% block content %}
+    <a class="nav-link" href="{% url 'sections:create' %}">Добавить секцию</a>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>{% translate "id"|upper %}</th>
+      <th>Наименование секции</th>
+      <th>Оси расположения</th>
+      <th>Относительная отметка</th>
+      <th>Абсолютная отметка</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for section in object_list %}
+      <tr>
+        <td>{{ section.id }}</td>
+        <td>{{ section.name }}</td>
+        <td>{{ section.axes_location }}</td>
+        <td>{{ section.bottom_floor_mark }}</td>
+        <td>{{ section.absolute_zero_mark }}</td>
+        <td>
+          <a href="{% url 'sections:update' section.pk %}">{% translate "Update" %}</a>
+          <br>
+          <a href="{% url 'sections:delete' section.pk %}">{% translate "Delete" %}</a>
+        </td>
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

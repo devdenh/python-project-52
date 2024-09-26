@@ -28,22 +28,28 @@
           </li>
 
             {% if request.user.is_authenticated %}
+            <li class="nav-item ">
+              <a class="nav-link text-white" href={% url 'concrete:index' %}>Бетоны</a>
+            </li>
+            <li class="nav-item ">
+              <a class="nav-link text-white" href={% url 'projects:index' %}>Проекты</a>
+            </li>
+            <li class="nav-item ">
+              <a class="nav-link text-white" href={% url 'sections:index' %}>Секции</a>
+            </li>
+            <li class="nav-item ">
+              <a class="nav-link text-white" href={% url 'columns:index' %}>Колонны</a>
+            </li>
+            <li class="nav-item ">
+              <a class="nav-link text-white" href={% url 'walls:index' %}>Стены</a>
+            </li>
+            <li class="nav-item ">
+              <a class="nav-link text-white" href={% url 'slabs:index' %}>Перекрытия</a>
+            </li>
+            <li class="nav-item ">
+              <a class="nav-link text-white" href={% url 'transitions:index' %}>Лестничные площадки</a>
+            </li>
 
-            <li class="nav-item ">
-              <a class="nav-link text-white" href={% url 'statuses:index' %}>{% translate "Statuses" %}</a>
-            </li>
-            <li class="nav-item ">
-              <a class="nav-link text-white" href={% url 'labels:index' %}>{% translate "Labels" %}</a>
-            </li>
-            <li class="nav-item ">
-              <a class="nav-link text-white" href={% url 'tasks:index' %}>{% translate "Tasks" %}</a>
-            </li>
-            <li class="nav-item ">
-              <a class="nav-link text-white" href={% url 'concrete:index' %}>Бетон</a>
-            </li>
-            <li class="nav-item ">
-              <a class="nav-link text-white" href={% url 'projects:index' %}>Проект</a>
-            </li>
 
             {% endif %}
 

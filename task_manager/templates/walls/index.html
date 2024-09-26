@@ -1,0 +1,36 @@
+{% extends 'layouts/base.html' %}
+{% load bootstrap4 %}
+{% load i18n %}
+
+{% block header %}
+Стены
+{% endblock %}
+
+{% bootstrap_messages %}
+
+{% block content %}
+    <a class="nav-link" href="{% url 'walls:create' %}">Добавить стену</a>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>{% translate "id"|upper %}</th>
+      <th>Наименование стены</th>
+      <th>Объем</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for wall in object_list %}
+      <tr>
+        <td>{{ wall.id }}</td>
+        <td>{{ wall.volume }}</td>
+        <td>
+          <a href="{% url 'walls:update' wall.pk %}">{% translate "Update" %}</a>
+          <br>
+          <a href="{% url 'walls:delete' wall.pk %}">{% translate "Delete" %}</a>
+        </td>
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

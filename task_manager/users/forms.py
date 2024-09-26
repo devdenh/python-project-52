@@ -4,6 +4,7 @@ from django.contrib.auth import get_user_model
 from django.utils.html import format_html
 from django import forms
 
+from task_manager.users.models import User
 
 USERNAME_FIELD_SESCRIPTION = _("Обязательное поле. "
                                "Не более 150 символов. "
@@ -17,12 +18,18 @@ SHORT_PASSWORD_ERROR = _("Введённый пароль слишком кор�
 class RegisterUserForm(UserCreationForm):
 
     def __init__(self, *args, **kwargs):
+        is_update = kwargs.pop('is_update', False)
         super().__init__(*args, **kwargs)
         as_ul = format_html("<ul>{}</ul>",
                             format_html("<li>{}</li>",
                                         PASSWORD_REQUIREMENTS_MESSAGE))
         self.fields["password1"].help_text = as_ul
         self.fields["password2"].help_text = REPEAT_PASSWORD_MESSAGE
+
+        if is_update:
+            self.fields['username'].required = False  # Делаем поле необязательным
+            self.fields['password1'].required = False  # Пароль можно не менять при обновлении
+            self.fields['password2'].required = False  # Повторный пароль тоже не обязателен
 
     first_name = forms.CharField(label=_('First name'),
                                  required=True,)
