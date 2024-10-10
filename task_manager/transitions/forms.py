@@ -8,10 +8,12 @@ class TransitionForm(forms.ModelForm):
     class Meta:
         model = Transition
         fields = [
-            'name', 'volume', 'thickness'
+            'name', 'volume', 'thickness', 'project_sheet', 'project'
         ]
         labels = {
             'name': 'Наименование',
             'volume': 'Объем',
             'thickness': 'Толщина',
+            'project_sheet': 'Лист проекта',
+            'project': 'Проект'
         }

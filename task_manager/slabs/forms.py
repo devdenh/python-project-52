@@ -8,10 +8,12 @@ class SlabForm(forms.ModelForm):
     class Meta:
         model = Slab
         fields = [
-            'name', 'volume', 'thickness'
+            'name', 'volume', 'thickness', 'project_sheet', 'project'
         ]
         labels = {
             'name': 'Наименование перекрытия',
             'volume': 'Объем',
-            'thickness': 'Толщина'
+            'thickness': 'Толщина',
+            'project_sheet': 'Лист проекта',
+            'project': 'Проект'
         }

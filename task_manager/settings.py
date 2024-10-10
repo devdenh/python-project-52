@@ -35,7 +35,7 @@ DEBUG = os.getenv("DEBUG")
 
 CSRF_TRUSTED_ORIGINS = [
     'https://*.railway.app',
-    'https://daf7-176-226-182-188.ngrok-free.app'
+    'https://*.ngrok-free.app'
 ]
 
 ALLOWED_HOSTS = ['*']
@@ -64,6 +64,9 @@ INSTALLED_APPS = [
     "task_manager.walls",
     "task_manager.slabs",
     "task_manager.transitions",
+    "task_manager.floors",
+    "task_manager.links.cfs",
+    "task_manager.links.wfs"
 ]
 
 MIDDLEWARE = [

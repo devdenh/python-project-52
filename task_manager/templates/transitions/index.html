@@ -1,4 +1,4 @@
-{% extends 'layouts/base.html' %}
+{% extends 'info.html' %}
 {% load bootstrap4 %}
 {% load i18n %}
 
@@ -17,6 +17,8 @@
       <th>Наименование лестничной площадки</th>
       <th>Объем</th>
       <th>Толщина</th>
+      <th>Лист проекта</th>
+      <th>Проект</th>
       <th></th>
     </tr>
   </thead>
@@ -26,6 +28,8 @@
         <td>{{ transition.id }}</td>
         <td>{{ transition.volume }}</td>
         <td>{{ transition.thickness }}</td>
+        <td>{{ transition.project_sheet }}</td>
+        <td>{{ transition.project }}</td>
         <td>
           <a href="{% url 'transitions:update' transition.pk %}">{% translate "Update" %}</a>
           <br>

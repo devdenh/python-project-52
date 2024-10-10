@@ -1,14 +1,18 @@
 from django.db import models
 from django.urls import reverse_lazy
 
+from task_manager.projects.models import Project
+
 
 class Column(models.Model):
     name = models.CharField(max_length=100) # Наименование колонны
     length = models.FloatField() # Длина в сечении
     width = models.FloatField() # Ширина в сечении
+    project_sheet = models.CharField(max_length=100) # Лист проекта
+    project = models.ForeignKey(Project, on_delete=models.CASCADE) # Проект
 
     def get_absolute_url(self):
-        return reverse_lazy('sections:index')
+        return reverse_lazy('columns:index')
 
     def __str__(self):
         return self.name

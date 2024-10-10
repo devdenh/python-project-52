@@ -1,0 +1,41 @@
+{% extends 'links.html' %}
+{% load bootstrap4 %}
+{% load i18n %}
+
+{% block header %}
+Стены Этажи Секции
+{% endblock %}
+
+{% bootstrap_messages %}
+
+{% block content %}
+    <a class="nav-link" href="{% url 'links:wfs:create' %}">Добавить связь</a>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>{% translate "id"|upper %}</th>
+      <th>Стена</th>
+      <th>Этаж</th>
+      <th>Секция</th>
+      <th>Бетон</th>
+      <th>Ось</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for wfs in object_list %}
+      <tr>
+        <td>{{ wfs.id }}</td>
+        <td>{{ wfs.wall }}</td>
+        <td>{{ wfs.floor }}</td>
+        <td>{{ wfs.section }}</td>
+        <td>{{ wfs.concrete }}</td>
+        <td>
+          <a href="{% url 'links:wfs:update' cfs.pk %}">{% translate "Update" %}</a>
+          <br>
+          <a href="{% url 'links:wfs:delete' cfs.pk %}">{% translate "Delete" %}</a>
+        </td>
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

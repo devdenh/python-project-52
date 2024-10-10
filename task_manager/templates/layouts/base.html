@@ -16,6 +16,7 @@
   </head>
   <body >
 
+{% block navbar %}
 <nav class="navbar navbar-expand-lg navbar-light bg-dark ">
       <a class="navbar-brand text-white bg-dark" href={% url 'root' %}>{% translate "Task manager" %}</a>
       <button class="navbar-toggler collapsed bg-light" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-expanded="false">
@@ -49,8 +50,9 @@
             <li class="nav-item ">
               <a class="nav-link text-white" href={% url 'transitions:index' %}>Лестничные площадки</a>
             </li>
-
-
+            <li class="nav-item ">
+              <a class="nav-link text-white" href={% url 'floors:index' %}>Этажи</a>
+            </li>
             {% endif %}
 
         </ul>
@@ -70,6 +72,7 @@
         </ul>
       </div>
     </nav>
+{% endblock %}
 
   <div class="jumbotron">
     <div class="container">

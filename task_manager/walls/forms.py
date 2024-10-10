@@ -8,11 +8,11 @@ class WallForm(forms.ModelForm):
     class Meta:
         model = Wall
         fields = [
-            'name', 'volume', 'thickness', 'section_floor'
+            'name', 'volume', 'project_sheet', 'project'
         ]
         labels = {
             'name': 'Наименование стены',
             'volume': 'Объем',
-            'thickness': 'Толщина',
-            'section_floor': 'Связь с этажом секции'
+            'project_sheet': 'Лист проекта',
+            'project': 'Проект'
         }

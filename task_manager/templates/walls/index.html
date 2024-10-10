@@ -1,4 +1,4 @@
-{% extends 'layouts/base.html' %}
+{% extends 'info.html' %}
 {% load bootstrap4 %}
 {% load i18n %}
 
@@ -16,6 +16,8 @@
       <th>{% translate "id"|upper %}</th>
       <th>Наименование стены</th>
       <th>Объем</th>
+      <th>Лист проекта</th>
+      <th>Проект</th>
       <th></th>
     </tr>
   </thead>
@@ -24,6 +26,8 @@
       <tr>
         <td>{{ wall.id }}</td>
         <td>{{ wall.volume }}</td>
+        <td>{{ wall.project_sheet }}</td>
+        <td>{{ wall.project }}</td>
         <td>
           <a href="{% url 'walls:update' wall.pk %}">{% translate "Update" %}</a>
           <br>

@@ -1,0 +1,46 @@
+{% extends 'info.html' %}
+{% load bootstrap4 %}
+{% load i18n %}
+
+{% block header %}
+Этажи
+{% endblock %}
+
+{% bootstrap_messages %}
+
+{% block content %}
+    <a class="nav-link" href="{% url 'floors:create' %}">Добавить этаж</a>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>{% translate "id"|upper %}</th>
+      <th>Номер этажа</th>
+      <th>Номер яруса</th>
+      <th>Высота этажа</th>
+      <th>Высота вертикальных конструкций</th>
+      <th>Толщина перекрытий</th>
+      <th>Секция</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for floor in object_list %}
+      <tr>
+        <td>{{ floor.id }}</td>
+        <td>{{ floor.number }}</td>
+        <td>{{ floor.tier_number }}</td>
+        <td>{{ floor.floor_height }}</td>
+        <td>{{ floor.wall_height }}</td>
+        <td>{{ floor.slab_thickness }}</td>
+        <td>{{ floor.section }}</td>
+        <td>
+          <a href="{% url 'floors:update' floor.pk %}">{% translate "Update" %}</a>
+          <br>
+          <a href="{% url 'floors:delete' floor.pk %}">{% translate "Delete" %}</a>
+        </td>
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

@@ -1,0 +1,42 @@
+{% extends 'links.html' %}
+{% load bootstrap4 %}
+{% load i18n %}
+
+{% block header %}
+Колонны Этажи Секции
+{% endblock %}
+
+{% bootstrap_messages %}
+
+{% block content %}
+    <a class="nav-link" href="{% url 'links:cfs:create' %}">Добавить связь</a>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>{% translate "id"|upper %}</th>
+      <th>Колонна</th>
+      <th>Этаж</th>
+      <th>Секция</th>
+      <th>Бетон</th>
+      <th>Ось</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for cfs in object_list %}
+      <tr>
+        <td>{{ cfs.id }}</td>
+        <td>{{ cfs.column }}</td>
+        <td>{{ cfs.floor }}</td>
+        <td>{{ cfs.section }}</td>
+        <td>{{ cfs.concrete }}</td>
+        <td>{{ cfs.axes }}</td>
+        <td>
+          <a href="{% url 'links:cfs:update' cfs.pk %}">{% translate "Update" %}</a>
+          <br>
+          <a href="{% url 'links:cfs:delete' cfs.pk %}">{% translate "Delete" %}</a>
+        </td>
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

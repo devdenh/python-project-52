@@ -1,0 +1,67 @@
+{% extends 'layouts/base.html' %}
+{% load bootstrap4 %}
+{% load i18n %}
+
+{% block header %}
+Справочная информация
+{% endblock %}
+
+{% bootstrap_messages %}
+
+{% block navbar %}
+<nav class="navbar navbar-expand-lg navbar-light bg-dark ">
+      <a class="navbar-brand text-white bg-dark" href={% url 'root' %}>{% translate "Task manager" %}</a>
+      <button class="navbar-toggler collapsed bg-light" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-expanded="false">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="navbar-collapse collapse" id="navbarToggleExternalContent" style="">
+        <ul class="navbar-nav mr-auto">
+
+            {% if request.user.is_authenticated %}
+            <li class="nav-item ">
+              <a class="nav-link text-white" href={% url 'concrete:index' %}>Бетоны</a>
+            </li>
+            <li class="nav-item ">
+              <a class="nav-link text-white" href={% url 'projects:index' %}>Проекты</a>
+            </li>
+            <li class="nav-item ">
+              <a class="nav-link text-white" href={% url 'sections:index' %}>Секции</a>
+            </li>
+            <li class="nav-item ">
+              <a class="nav-link text-white" href={% url 'columns:index' %}>Колонны</a>
+            </li>
+            <li class="nav-item ">
+              <a class="nav-link text-white" href={% url 'walls:index' %}>Стены</a>
+            </li>
+            <li class="nav-item ">
+              <a class="nav-link text-white" href={% url 'slabs:index' %}>Перекрытия</a>
+            </li>
+            <li class="nav-item ">
+              <a class="nav-link text-white" href={% url 'transitions:index' %}>Лестничные площадки</a>
+            </li>
+            <li class="nav-item ">
+              <a class="nav-link text-white" href={% url 'floors:index' %}>Этажи</a>
+            </li>
+            <li class="nav-item ">
+              <a class="nav-link text-white" href="{% url 'links:index' %}">Связи</a>
+            </li>
+            {% endif %}
+
+        </ul>
+        <ul class="navbar-nav">
+            {% if request.user.is_authenticated %}
+            <li class="nav-item">
+              <a class="nav-link text-white" href="{% url 'logout' %}">{% translate 'Logout' %}</a>
+            {% else %}
+            <li class="nav-item">
+              <a class="nav-link text-white" href={% url 'login' %}>{% translate "Login" %}</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white" href={% url 'users:create' %}>{% translate "Sing up" %}</a>
+            </li>
+            {% endif %}
+
+        </ul>
+      </div>
+    </nav>
+{% endblock %}

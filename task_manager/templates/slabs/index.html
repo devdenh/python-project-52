@@ -1,4 +1,4 @@
-{% extends 'layouts/base.html' %}
+{% extends 'info.html' %}
 {% load bootstrap4 %}
 {% load i18n %}
 
@@ -17,6 +17,8 @@
       <th>Наименование перекрытия</th>
       <th>Объем</th>
       <th>Толщина</th>
+      <th>Лист проекта</th>
+      <th>Проект</th>
       <th></th>
     </tr>
   </thead>
@@ -26,6 +28,8 @@
         <td>{{ slab.id }}</td>
         <td>{{ slab.volume }}</td>
         <td>{{ slab.thickness }}</td>
+        <td>{{ slab.project_sheet }}</td>
+        <td>{{ slab.project }}</td>
         <td>
           <a href="{% url 'slabs:update' slab.pk %}">{% translate "Update" %}</a>
           <br>

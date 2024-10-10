@@ -14,6 +14,14 @@ class IndexView(TemplateView):
     template_name = 'index.html'
 
 
+class InfoView(TemplateView):
+    template_name = 'info.html'
+
+
+class ManagementView(TemplateView):
+    template_name = 'management.html'
+
+
 class UserLogin(SuccessMessageMixin, LoginView):
     form_class = UserLoginForm
     template_name = 'login.html'

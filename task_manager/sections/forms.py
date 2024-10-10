@@ -11,6 +11,6 @@ class SectionForm(forms.ModelForm):
         labels = {
             'name': 'Наименование секции',
             'axes_location': 'Оси расположения',
-            'bottom_floor_mark': 'Относительная отметка',
+            'bottom_floor_mark': 'Относительная отметка нуля',
             'absolute_zero_mark': 'Абсолютная отметка'
         }
