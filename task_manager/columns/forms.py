@@ -8,12 +8,11 @@ class ColumnForm(forms.ModelForm):
     class Meta:
         model = Column
         fields = [
-            'name', 'length', 'width', 'project_sheet', 'project'
+            'name', 'volume', 'project_sheet', 'project'
         ]
         labels = {
             'name': 'Наименование колонны',
-            'length': 'Длина в сечении',
-            'width': 'Ширина в сечении',
+            'volume': 'Объем',
             'project_sheet': 'Лист проекта',
             'project': 'Проект'
         }

@@ -6,8 +6,7 @@ from task_manager.projects.models import Project
 
 class Column(models.Model):
     name = models.CharField(max_length=100) # Наименование колонны
-    length = models.FloatField() # Длина в сечении
-    width = models.FloatField() # Ширина в сечении
+    volume = models.FloatField() # Объем
     project_sheet = models.CharField(max_length=100) # Лист проекта
     project = models.ForeignKey(Project, on_delete=models.CASCADE) # Проект
 

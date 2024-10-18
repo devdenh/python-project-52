@@ -1,0 +1,42 @@
+{% extends 'links.html' %}
+{% load bootstrap4 %}
+{% load i18n %}
+
+{% block header %}
+Перекрытия Этажи Секции
+{% endblock %}
+
+{% bootstrap_messages %}
+
+{% block content %}
+    <a class="nav-link" href="{% url 'links:sfs:create' %}">Добавить связь</a>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>{% translate "id"|upper %}</th>
+      <th>Перекрытие</th>
+      <th>Этаж</th>
+      <th>Секция</th>
+      <th>Бетон</th>
+      <th>Ось</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for sfs in object_list %}
+      <tr>
+        <td>{{ sfs.id }}</td>
+        <td>{{ sfs.slab }}</td>
+        <td>{{ sfs.floor }}</td>
+        <td>{{ sfs.section }}</td>
+        <td>{{ sfs.concrete }}</td>
+        <td>{{ sfs.axes }}</td>
+        <td>
+          <a href="{% url 'links:sfs:update' sfs.pk %}">{% translate "Update" %}</a>
+          <br>
+          <a href="{% url 'links:sfs:delete' sfs.pk %}">{% translate "Delete" %}</a>
+        </td>
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

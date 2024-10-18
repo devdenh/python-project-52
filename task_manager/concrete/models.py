@@ -17,4 +17,4 @@ class Concrete(models.Model):
         return reverse_lazy('concrete:index')
 
     def __str__(self):
-        return f"{self.klas} - {self.marka}"
+        return f"{self.klas}"

@@ -29,10 +29,11 @@
         <td>{{ wfs.floor }}</td>
         <td>{{ wfs.section }}</td>
         <td>{{ wfs.concrete }}</td>
+        <td>{{ wfs.axes }}</td>
         <td>
-          <a href="{% url 'links:wfs:update' cfs.pk %}">{% translate "Update" %}</a>
+          <a href="{% url 'links:wfs:update' wfs.pk %}">{% translate "Update" %}</a>
           <br>
-          <a href="{% url 'links:wfs:delete' cfs.pk %}">{% translate "Delete" %}</a>
+          <a href="{% url 'links:wfs:delete' wfs.pk %}">{% translate "Delete" %}</a>
         </td>
       </tr>
     {% endfor %}

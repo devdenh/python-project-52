@@ -15,10 +15,9 @@
     <tr>
       <th>{% translate "id"|upper %}</th>
       <th>Наименование колонны</th>
-      <th>Длина в сечении</th>
-      <th>Ширина в сечении</th>
+      <th>Объем</th>
       <th>Лист проекта</th>
-      <th>Проект</th>
+      <th>Шифр проекта</th>
       <th></th>
     </tr>
   </thead>
@@ -27,8 +26,7 @@
       <tr>
         <td>{{ column.id }}</td>
         <td>{{ column.name }}</td>
-        <td>{{ column.length }}</td>
-        <td>{{ column.width }}</td>
+        <td>{{ column.volume }}</td>
         <td>{{ column.project_sheet }}</td>
         <td>{{ column.project }}</td>
         <td>

@@ -66,7 +66,10 @@ INSTALLED_APPS = [
     "task_manager.transitions",
     "task_manager.floors",
     "task_manager.links.cfs",
-    "task_manager.links.wfs"
+    "task_manager.links.wfs",
+    "task_manager.links.sfs",
+    "task_manager.links.tfs",
+    "task_manager.dashboard"
 ]
 
 MIDDLEWARE = [

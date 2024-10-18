@@ -3,7 +3,7 @@ from django.urls import reverse_lazy
 
 
 class Project(models.Model):
-    designation = models.CharField(max_length=100)  # Обозначение
+    designation = models.CharField(max_length=100)  # Шифр проекта
     name = models.CharField(max_length=255)         # Наименование
     change_number = models.FloatField()             # Номер изменений
     issue_date = models.DateField()                 # Дата выдачи
@@ -12,4 +12,4 @@ class Project(models.Model):
         return reverse_lazy('projects:index')
 
     def __str__(self):
-        return self.name
+        return self.designation

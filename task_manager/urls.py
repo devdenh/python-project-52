@@ -37,4 +37,5 @@ urlpatterns = [
     path("transitions/", include("task_manager.transitions.urls")),
     path("floors/", include("task_manager.floors.urls")),
     path("links/", include("task_manager.links.urls")),
+    path("dashboard/", include("task_manager.dashboard.urls")),
 ]

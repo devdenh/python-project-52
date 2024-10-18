@@ -9,7 +9,7 @@ class ProjectsForm(forms.ModelForm):
         model = Project
         fields = ['designation', 'name', 'change_number', 'issue_date']
         labels = {
-            'designation': 'Обозначение',
+            'designation': 'шифр проекта',
             'name': 'Наименование',
             'change_number': 'Номер изменений',
             'issue_date': 'Дата выдачи'
