@@ -1,7 +1,8 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.messages.views import SuccessMessageMixin
 from django.db.models import Q
 from django.utils.translation import gettext as _
-from django.views.generic import ListView
+from django.views.generic import ListView, DetailView, CreateView
 from django_filters.views import FilterView
 
 from task_manager.dashboard.forms import DashboardFilterForm
@@ -14,70 +15,46 @@ DELETE_SUCCESS_MESSAGE = _("Task deleted Successfully")
 NOT_AUTHOR_MESSAGE = _("Only author can delete this task")
 
 
-class IndexView(LoginRequiredMixin,
-                FilterView):
-    model = Task
-    template_name = 'dashboard/index.html'
-    filterset_class = DashboardFilterForm
-
-    def get_context_data(self, *, object_list=None, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context["filter"] = DashboardFilterForm(self.request.GET,
-                                                queryset=self.get_queryset())
-        return context
+# class IndexView(LoginRequiredMixin,
+#                 FilterView):
+#     model = Dashboard
+#     template_name = 'dashboard/index.html'
+#     filterset_class = DashboardFilterForm
+#
+#     def get_context_data(self, *, object_list=None, **kwargs):
+#         context = super().get_context_data(**kwargs)
+#         context["filter"] = DashboardFilterForm(self.request.GET,
+#                                                 queryset=self.get_queryset())
+#         return context
 
 
 class DashboardView(LoginRequiredMixin,
                     FilterView):
     model = Dashboard  # Используем связь как основную модель
     template_name = 'dashboard/dashboard.html'
-    context_object_name = 'results'
     filterset_class = DashboardFilterForm
 
-    def get_queryset(self):
-        queryset = super().get_queryset()
 
-        # Получаем данные фильтров из GET-запроса
-        section = self.request.GET.get('section')
-        floor = self.request.GET.get('floor')
-        concrete = self.request.GET.get('concrete')
-        project = self.request.GET.get('project')
-        column = self.request.GET.get('column')
-        wall = self.request.GET.get('wall')
-        slab = self.request.GET.get('slab')
-
-        # Применение фильтров
-        if section:
-            queryset = queryset.filter(section__id=section)
-        if floor:
-            queryset = queryset.filter(floor__id=floor)
-        if concrete:
-            queryset = queryset.filter(concrete__id=concrete)
-        if project:
-            queryset = queryset.filter(
-                Q(column__project__id=project) | Q(wall__project__id=project) | Q(slab__project__id=project))
-        if column:
-            queryset = queryset.filter(column__id=column)
-        if wall:
-            queryset = queryset.filter(wall__id=wall)
-        if slab:
-            queryset = queryset.filter(slab__id=slab)
-
-        return queryset
-
-    def get_context_data(self, **kwargs):
+    def get_context_data(self, *, object_list=None, **kwargs):
         context = super().get_context_data(**kwargs)
         # Передаем форму фильтров в контекст
-        context['filter_form'] = DashboardFilterForm(self.request.GET or None)
+        filter_set = DashboardFilterForm(self.request.GET, queryset=self.get_queryset())
+        context['filter'] = filter_set
+        context['constructions'] = filter_set.qs
+
+        context['active_filters'] = filter_set.active_filters
+
+        context['total_volume'] = filter_set.calculate_total_volume()
+
         return context
 
 
 # class DetailTask(DetailView):
-#     model = Task
-#     template_name = "tasks/detail.html"
-#     extra_context = {"labels": Label.objects.all()}
-#
-#
+#     model = Dashboard
+#     template_name = "dashboard/detail.html"
+    # extra_context = {"labels": Label.objects.all()}
+
+
 # class TaskRegistrate(LoginRequiredMixin,
 #                      SuccessMessageMixin,
 #                      CreateView):

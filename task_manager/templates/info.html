@@ -3,14 +3,14 @@
 {% load i18n %}
 
 {% block header %}
-Справочная информация
+Справочная панель
 {% endblock %}
 
 {% bootstrap_messages %}
 
 {% block navbar %}
 <nav class="navbar navbar-expand-lg navbar-light bg-dark ">
-      <a class="navbar-brand text-white bg-dark" href={% url 'root' %}>{% translate "Task manager" %}</a>
+      <a class="navbar-brand text-white bg-dark" href={% url 'root' %}>Главная</a>
       <button class="navbar-toggler collapsed bg-light" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-expanded="false">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -51,7 +51,11 @@
         <ul class="navbar-nav">
             {% if request.user.is_authenticated %}
             <li class="nav-item">
-              <a class="nav-link text-white" href="{% url 'logout' %}">{% translate 'Logout' %}</a>
+                <form action="{% url 'logout' %}" method="post" style="display: inline;">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-primary">{% translate 'Logout' %}</button>
+                </form>
+            </li>
             {% else %}
             <li class="nav-item">
               <a class="nav-link text-white" href={% url 'login' %}>{% translate "Login" %}</a>

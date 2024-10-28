@@ -22,6 +22,10 @@ class ManagementView(TemplateView):
     template_name = 'management.html'
 
 
+class VersionView(TemplateView):
+    template_name = 'version.html'
+
+
 class UserLogin(SuccessMessageMixin, LoginView):
     form_class = UserLoginForm
     template_name = 'login.html'
@@ -30,6 +34,7 @@ class UserLogin(SuccessMessageMixin, LoginView):
 
 
 class UserLogoutView(LogoutView):
+
     def dispatch(self, request, *args, **kwargs):
         if request.user.is_authenticated:
             messages.info(request, LOGGED_OUT_MESSAGE)

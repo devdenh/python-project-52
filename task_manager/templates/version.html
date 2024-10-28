@@ -3,7 +3,7 @@
 {% load i18n %}
 
 {% block header %}
-Панель пользователей
+Справка
 {% endblock %}
 
 {% bootstrap_messages %}
@@ -15,14 +15,10 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="navbar-collapse collapse" id="navbarToggleExternalContent" style="">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item ">
-            <a class="nav-link text-white" href={% url 'users:index' %}>{% translate "Users" %}</a>
-          </li>
 
 
-        </ul>
-        <ul class="navbar-nav">
+      </div>
+            <ul class="navbar-nav">
             {% if request.user.is_authenticated %}
             <li class="nav-item">
                 <form action="{% url 'logout' %}" method="post" style="display: inline;">
@@ -30,6 +26,7 @@
                     <button type="submit" class="btn btn-primary">{% translate 'Logout' %}</button>
                 </form>
             </li>
+
             {% else %}
             <li class="nav-item">
               <a class="nav-link text-white" href={% url 'login' %}>{% translate "Login" %}</a>
@@ -40,6 +37,10 @@
             {% endif %}
 
         </ul>
-      </div>
     </nav>
+{% endblock %}
+{% block content %}
+<p>Current Version: 0.0.1beta</p>
+
+В разделе "Информационна панель" указаны только те конструкции, которые добавленны в разделе "Справочная панель"/"Связи"
 {% endblock %}
