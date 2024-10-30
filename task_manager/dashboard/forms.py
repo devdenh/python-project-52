@@ -97,7 +97,7 @@ class DashboardFilterForm(django_filters.FilterSet):
 
     floor = django_filters.ModelMultipleChoiceFilter(
         field_name='floor',
-        queryset=Floor.objects.all(),
+        queryset=Floor.objects.all().distinct("number"),
         label=_("Этаж")
     )
 

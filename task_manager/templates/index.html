@@ -1,10 +1,8 @@
 {% extends 'layouts/base.html' %}
 {% load bootstrap4 %}
 {% load i18n %}
-
 {% bootstrap_css %}
 {% bootstrap_javascript jquery='full' %}
-
 {% bootstrap_messages %}
 
 {% block navbar %}
@@ -27,7 +25,6 @@
             <li class="nav-item">
                 <a class="nav-link text-white" href="{% url 'version' %}">Справка</a>
             </li>
-
         </ul>
         <ul class="navbar-nav">
             {% if request.user.is_authenticated %}
@@ -44,7 +41,6 @@
             <li class="nav-item">
                 <a class="nav-link text-white" href="{% url 'users:create' %}">{% translate "Sign up" %}</a>
             </li>
-
             {% endif %}
         </ul>
     </div>
@@ -52,7 +48,26 @@
 {% endblock %}
 
 {% block content %}
-
-      <h1 class="display-3 pt-5 mt-5 pb-5">{% translate "Привет"%}</h1>
-
+<div class="container mt-5">
+    <div class="welcome-message">
+        <h1>Добро пожаловать в приложение!</h1>
+        <p>Здесь вы найдете всю необходимую информацию для детального обзора проекта строительства.</p>
+    </div>
+    <div class="features">
+        <h2>Основные функции</h2>
+        <p>Наше приложение позволяет анализировать информацию о конструкциях и материалах, используя мощные фильтры для быстрого получения точной и актуальной информации.</p>
+    </div>
+    <div class="instructions">
+        <h2>Инструкции для начала работ</h2>
+        <p>Для начала работы выберите необходимый раздел в верхней части страницы. Программа обработает данные и предоставит результаты в удобном для восприятия виде.</p>
+    </div>
+    <div class="advantages">
+        <h2>Преимущества</h2>
+        <p>Программа помогает значительно упростить процесс планирования и анализа, повышая эффективность работы. Наш принцип "Долой рутину!", смысл которого в том, чтобы любую задачу выполнять один раз, а всю остальную работу доверить программному коду.</p>
+    </div>
+    <div class="contact-info">
+        <h2>Контактная информация</h2>
+        <p>Если у вас возникли вопросы или нужна помощь, свяжитесь с нами через форму обратной связи или по электронной почте.</p>
+    </div>
+</div>
 {% endblock %}
