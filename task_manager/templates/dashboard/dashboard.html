@@ -1,0 +1,177 @@
+{% extends 'info.html' %}
+{% load bootstrap4 %}
+{% load i18n %}
+
+{% block header %}
+Информационная панель
+{% endblock %}
+
+{% bootstrap_messages %}
+
+{% block navbar %}
+<nav class="navbar navbar-expand-lg navbar-light bg-dark ">
+      <a class="navbar-brand text-white bg-dark" href={% url 'root' %}>Главная</a>
+      <button class="navbar-toggler collapsed bg-light" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-expanded="false">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+</nav>
+{% endblock %}
+
+{% block content %}
+  <!-- Форма фильтрации -->
+<div class="card-body">
+    <form class="form-inline right" method="get">
+        <div class="row">
+            <!-- Первая колонка с первыми фильтрами -->
+            <div class="col-md-6">
+                <!-- Фильтр по бетону -->
+                <div class="form-group ml-3 p-1 col-12">
+                    <label for="concrete">Выбрать бетон</label>
+                    <select id="concrete" name="concrete" multiple="multiple" class="form-control">
+                        {% for concrete in filter.form.fields.concrete.queryset %}
+                                <option value="{{ concrete.id }}">{{ concrete.klas }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+                <!-- Выпадающий список с чекбоксами для колонн -->
+                <div class="form-group ml-3 p-1 col-12">
+                    <label for="column">Выбрать колонны</label>
+                    <select id="column" name="column" multiple="multiple" class="form-control">
+                        {% for column in filter.form.fields.column.queryset %}
+                            <option value="{{ column.id }}">{{ column.name }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+                <!-- Фильтр по секции -->
+               <div class="form-group ml-3 p-1 col">
+                  <label for="section">Выбрать секции</label>
+                  <select id="section" name="section" multiple="multiple">
+                    {% for section in filter.form.fields.section.queryset %}
+                      <option value="{{ section.id }}">{{ section.name }}</option>
+                    {% endfor %}
+                  </select>
+                </div>
+            </div>
+
+            <!-- Вторая колонка с оставшимися фильтрами -->
+            <div class="col-md-6">
+                <!-- Фильтр по этажу -->
+                <div class="form-group ml-3 p-1 col-12">
+                    <label for="floor">Выбрать этаж</label>
+                    <select id="floor" name="floor" multiple="multiple" class="form-control">
+                        {% for floor in filter.form.fields.floor.queryset %}
+                            <option value="{{ floor.id }}">{{ floor.number }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+                <!-- Фильтр по стенам -->
+                <div class="form-group ml-3 p-1 col-12">
+                    <label for="wall">Выбрать стены</label>
+                    <select id="wall" name="wall" multiple="multiple" class="form-control">
+                        {% for wall in filter.form.fields.wall.queryset %}
+                                <option value="{{ wall.id }}">{{ wall.name }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+                <!-- Фильтр по перекрытиям -->
+                <div class="form-group ml-3 p-1 col-12">
+                    <label for="slab">Выбрать перекрытия</label>
+                    <select id="slab" name="slab" multiple="multiple" class="form-control">
+                        {% for slab in filter.form.fields.slab.queryset %}
+                                <option value="{{ slab.id }}">{{ slab.name }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+                <!-- Фильтр по площадкам -->
+                <div class="form-group ml-3 p-1 col-12">
+                    <label for="transition">Выбрать площадки</label>
+                    <select id="transition" name="transition" multiple="multiple" class="form-control">
+                        {% for transition in filter.form.fields.transition.queryset %}
+                                <option value="{{ transition.id }}">{{ transition.name }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <!-- Кнопки для фильтрации и сброса фильтров -->
+        <div class="row mt-3">
+            <div class="col-12 text-center">
+                <input class="btn btn-primary ml-3" type="submit" value="Показать">
+                <a href="{% url 'dashboard:index' %}" class="btn btn-primary ml-3">Очистить фильтры</a>
+            </div>
+        </div>
+    </form>
+</div>
+
+<div class="active-filters">
+    <ul>
+        {% for filter_name, filter_values in active_filters.items %}
+            {% if filter_values %}
+                <li>
+                    <strong>{{ filter_name|capfirst }}:</strong>
+                    {% for value in filter_values %}
+                        <span class="badge badge-primary">{{ value }}</span>
+                    {% endfor %}
+                </li>
+            {% endif %}
+        {% endfor %}
+    </ul>
+</div>
+
+<hr>
+  <h4>Общий объем бетона: {{ total_volume }} м³</h4>
+<h2>Результаты</h2>
+<ul>
+  {% for construction in constructions %}
+    <li>
+      {{ construction }}
+      {% if construction.column %}
+        (Бетон: {{ construction.concrete.klas }}, Объем: {{ construction.column.volume }} м³)
+      {% endif %}
+      {% if construction.slab %}
+        (Бетон: {{ construction.concrete.klas }}, Объем: {{ construction.slab.volume }} м³, толщина: {{ construction.slab.thickness }})
+      {% endif %}
+      {% if construction.wall %}
+        (Бетон: {{ construction.concrete.klas }}, Объем: {{ construction.wall.volume }} м³)
+      {% endif %}
+      {% if construction.transition %}
+        (Бетон: {{ construction.concrete.klas }}, Объем: {{ construction.transition.volume }} м³, толщина: {{ construction.transition.thickness }})
+      {% endif %}
+    </li>
+  {% empty %}
+    <li>Нет результатов по данному фильтру.</li>
+  {% endfor %}
+</ul>
+
+
+
+<!-- Подключение jQuery и плагина MultiSelect -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-multiselect/dist/css/bootstrap-multiselect.css">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap-multiselect/dist/js/bootstrap-multiselect.min.js"></script>
+
+<!-- Инициализация MultiSelect для всех полей -->
+<script type="text/javascript">
+  $(document).ready(function() {
+      $('#column, #concrete, #section, #floor, #wall, #slab, #transition').multiselect({
+          includeSelectAllOption: true,
+          selectAllText: 'Выбрать все',
+          nonSelectedText: 'Выберите значения',
+          buttonWidth: '100%',
+          enableFiltering: true,
+          filterPlaceholder: 'Искать...',
+          numberDisplayed: 1,
+          nSelectedText: 'выбрано',
+          allSelectedText: 'Все выбраны'
+      });
+  });
+</script>
+
+{% endblock %}
