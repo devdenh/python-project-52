@@ -19,7 +19,6 @@
       <th>Высота этажа</th>
       <th>Высота вертикальных конструкций</th>
       <th>Толщина перекрытий</th>
-      <th>Секция</th>
 
       <th></th>
     </tr>
@@ -33,7 +32,6 @@
         <td>{{ floor.floor_height }}</td>
         <td>{{ floor.wall_height }}</td>
         <td>{{ floor.slab_thickness }}</td>
-        <td>{{ floor.section }}</td>
         <td>
           <a href="{% url 'floors:update' floor.pk %}">{% translate "Update" %}</a>
           <br>

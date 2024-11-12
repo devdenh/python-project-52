@@ -97,7 +97,7 @@ class DashboardFilterForm(django_filters.FilterSet):
 
     floor = django_filters.ModelMultipleChoiceFilter(
         field_name='floor',
-        queryset=Floor.objects.all().distinct("number"),
+        queryset=Floor.objects.all(),
         label=_("Этаж")
     )
 
@@ -147,11 +147,12 @@ class DashboardFilterForm(django_filters.FilterSet):
 
         # Фильтрация по этажу
         if floor:
-            floors = self.data.get('floor')
+            floors = self.data.getlist('floor')
             cfs_qs = cfs_qs.filter(floor__in=floors)
             sfs_qs = sfs_qs.filter(floor__in=floors)
             tfs_qs = tfs_qs.filter(floor__in=floors)
             wfs_qs = wfs_qs.filter(floor__in=floors)
+
 
         querysets = []
 
@@ -169,6 +170,7 @@ class DashboardFilterForm(django_filters.FilterSet):
         if not any([slab, transition, column, walls]):
             querysets.extend([sfs_qs, tfs_qs, wfs_qs, cfs_qs])
 
+        # Выбранные фильтры
         self.active_filters = {}
         if self.data:
             self.active_filters = {

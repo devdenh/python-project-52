@@ -9,13 +9,12 @@ class FloorForm(forms.ModelForm):
         model = Floor
         fields = [
             'number', 'tier_number', 'floor_height', 'wall_height',
-            'slab_thickness', 'section'
+            'slab_thickness'
         ]
         labels = {
             'number': 'Номер этажа',
             'tier_number': 'Номер яруса',
             'floor_height': 'Высота вертикальных конструкций',
             'wall_height': 'Высота стен',
-            'slab_thickness': 'Толщина перекрытий',
-            'section': 'Секция'
+            'slab_thickness': 'Толщина перекрытий'
         }

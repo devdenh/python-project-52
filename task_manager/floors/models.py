@@ -10,7 +10,6 @@ class Floor(models.Model):
     floor_height = models.FloatField() # Высота вертикальных конструкций
     wall_height = models.FloatField() # Высота стен
     slab_thickness = models.FloatField() # Толщина перекрытий
-    section = models.ForeignKey(Section, on_delete=models.CASCADE)
 
     def get_absolute_url(self):
         return reverse_lazy('floors:index')
