@@ -69,7 +69,9 @@ INSTALLED_APPS = [
     "task_manager.links.wfs",
     "task_manager.links.sfs",
     "task_manager.links.tfs",
-    "task_manager.dashboard"
+    "task_manager.dashboard",
+    "task_manager.armatures",
+    "task_manager.armaturesklas"
 ]
 
 MIDDLEWARE = [

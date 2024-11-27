@@ -1,0 +1,35 @@
+{% extends 'info.html' %}
+{% load bootstrap4 %}
+{% load i18n %}
+
+{% block header %}
+Арматура
+{% endblock %}
+
+{% bootstrap_messages %}
+
+{% block content %}
+    <a class="nav-link" href="{% url 'armaturesklas:create' %}">Добавить клас арматуры</a>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>{% translate "id"|upper %}</th>
+      <th>Клас</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for armaturesklas in object_list %}
+      <tr>
+        <td>{{ armaturesklas.id }}</td>
+        <td>{{ armaturesklas.klas }}</td>
+        <td>
+          <a href="{% url 'armaturesklas:update' armaturesklas.pk %}">{% translate "Update" %}</a>
+          <br>
+          <a href="{% url 'armaturesklas:delete' armaturesklas.pk %}">{% translate "Delete" %}</a>
+        </td>
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

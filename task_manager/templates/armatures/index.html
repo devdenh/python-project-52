@@ -1,0 +1,37 @@
+{% extends 'info.html' %}
+{% load bootstrap4 %}
+{% load i18n %}
+
+{% block header %}
+Арматура
+{% endblock %}
+
+{% bootstrap_messages %}
+
+{% block content %}
+    <a class="nav-link" href="{% url 'armatures:create' %}">Добавить арматуру</a>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>{% translate "id"|upper %}</th>
+      <th>Диаметр</th>
+      <th>Масса погонного метра</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for armature in object_list %}
+      <tr>
+        <td>{{ armature.id }}</td>
+        <td>{{ armature.diameter }}</td>
+        <td>{{ armature.linear_weight }}</td>
+        <td>
+          <a href="{% url 'armatures:update' armature.pk %}">{% translate "Update" %}</a>
+          <br>
+          <a href="{% url 'armatures:delete' armature.pk %}">{% translate "Delete" %}</a>
+        </td>
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

@@ -39,4 +39,6 @@ urlpatterns = [
     path("floors/", include("task_manager.floors.urls")),
     path("links/", include("task_manager.links.urls")),
     path("dashboard/", include("task_manager.dashboard.urls")),
+    path("armatures/", include("task_manager.armatures.urls")),
+    path("armaturesklas/", include("task_manager.armaturesklas.urls"))
 ]

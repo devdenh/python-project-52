@@ -149,6 +149,24 @@
   {% endfor %}
 </ul>
 
+<!-- Пагинация -->
+<div class="pagination">
+    <span class="step-links">
+        {% if constructions.has_previous %}
+            <a href="?page=1">&laquo; Первая</a>
+            <a href="?page={{ constructions.previous_page_number }}">Предыдущая</a>
+        {% endif %}
+
+        <span class="current">
+            Страница {{ constructions.number }} из {{ constructions.paginator.num_pages }}.
+        </span>
+
+        {% if constructions.has_next %}
+            <a href="?page={{ constructions.next_page_number }}">Следующая</a>
+            <a href="?page={{ constructions.paginator.num_pages }}">Последняя &raquo;</a>
+        {% endif %}
+    </span>
+</div>
 
 
 <!-- Подключение jQuery и плагина MultiSelect -->

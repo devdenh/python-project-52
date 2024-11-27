@@ -8,4 +8,80 @@
 Добавить лестничную площадку
 {% endblock %}
 
-{% block button_value %}Добавить{% endblock %}
+{% block content %}
+<form class="container" method="post" id="transition_form">
+    {% csrf_token %}
+    <!-- Main form -->
+    {% bootstrap_form form layout="horizontal" %}
+
+    <!-- Inline formset for armature -->
+    {{ armature_formset.management_form }}
+    <script type="text/html" id="armature-template">
+        <tr id="armature-__prefix__">
+            {% for field in armature_formset.empty_form.visible_fields %}
+                <td>
+                    {{ field }}
+                    {% for error in field.errors %}
+                        <p class="text-danger">{{ error }}</p>
+                    {% endfor %}
+                </td>
+            {% endfor %}
+        </tr>
+    </script>
+
+    <div class="table-responsive card mt-4">
+        <div class="card-header">
+            <h4>Добавить арматуру</h4>
+        </div>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Диаметр</th>
+                    <th>Класс</th>
+                    <th>Длина стержня</th>
+                    <th>Количество стержней</th>
+                    <th>Тип стержня</th>
+                    <th>Место производства</th>
+                    <th>Удалить?</th>
+                </tr>
+            </thead>
+            <tbody id="item-armature">
+                {% for form in armature_formset %}
+                    <tr id="armature-{{ forloop.counter0 }}">
+                        {% for field in form.visible_fields %}
+                            <td>
+                                {{ field }}
+                                {% for error in field.errors %}
+                                    <p class="text-danger">{{ error }}</p>
+                                {% endfor %}
+                            </td>
+                        {% endfor %}
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <a href="#" id="add-armature-button" class="btn btn-secondary">Добавить еще</a>
+    </div>
+
+    <!-- Submit Button -->
+    <div class="form-group mt-4">
+        <button type="submit" class="btn btn-primary btn-block">Добавить</button>
+    </div>
+</form>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#add-armature-button').click(function (e) {
+            e.preventDefault();
+            var count = $('#item-armature').children().length;
+            var tmplMarkup = $('#armature-template').html();
+            var compiledTmpl = tmplMarkup.replace(/__prefix__/g, count);
+            $('#item-armature').append(compiledTmpl);
+
+            // Update form count
+            $('#id_transitionarmature_set-TOTAL_FORMS').val(count + 1);
+        });
+    });
+</script>
+{% endblock %}

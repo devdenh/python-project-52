@@ -1,4 +1,4 @@
-{% extends 'layouts/form.html' %}
+{% extends 'layouts/base.html' %}
 {% load bootstrap4 %}
 {% load i18n %}
 
@@ -6,5 +6,50 @@
 Обновить лестничную площадку
 {% endblock %}
 
-{% bootstrap_messages %}
-{% block button_value %}{% translate "Update" %}{% endblock %}
+{% block content %}
+<form method="post">
+  {% csrf_token %}
+  {% bootstrap_form form %}
+
+  <div class="card mt-4">
+    <div class="card-header">
+      <h4>Арматура</h4>
+    </div>
+    <div class="card-body">
+      {{ armature_formset.management_form }}
+      <table class="table">
+        <thead>
+          <tr>
+            {% for field in armature_formset.empty_form.visible_fields %}
+              <th>{{ field.label }}</th>
+            {% endfor %}
+          </tr>
+        </thead>
+        <tbody>
+          {% for form in armature_formset %}
+            <tr>
+              {% for field in form.visible_fields %}
+                <td>
+                  {{ field }}
+                  {% for error in field.errors %}
+                    <p class="text-danger">{{ error }}</p>
+                  {% endfor %}
+                </td>
+              {% endfor %}
+              </td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+
+
+  {% buttons %}
+    <input class="btn btn-primary" type="submit" value="{% block button_value %}Обновить{% endblock %}">
+  {% endbuttons %}
+</form>
+
+
+{% endblock content %}

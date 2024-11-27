@@ -1,5 +1,6 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.messages.views import SuccessMessageMixin
+from django.core.paginator import Paginator
 from django.db.models import Q
 from django.utils.translation import gettext as _
 from django.views.generic import ListView, DetailView, CreateView
@@ -28,26 +29,31 @@ NOT_AUTHOR_MESSAGE = _("Only author can delete this task")
 #         return context
 
 
-class DashboardView(LoginRequiredMixin,
-                    FilterView):
-    model = Dashboard  # Используем связь как основную модель
+class DashboardView(LoginRequiredMixin, FilterView):
+    model = Dashboard
     template_name = 'dashboard/dashboard.html'
     filterset_class = DashboardFilterForm
-
+    paginate_by = 20  # Количество элементов на странице
 
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super().get_context_data(**kwargs)
+
         # Передаем форму фильтров в контекст
         filter_set = DashboardFilterForm(self.request.GET, queryset=self.get_queryset())
+        constructions = filter_set.qs
+
+        # Пагинация
+        paginator = Paginator(constructions, self.paginate_by)
+        page_number = self.request.GET.get('page')
+        page_obj = paginator.get_page(page_number)
+
         context['filter'] = filter_set
-        context['constructions'] = filter_set.qs
-
+        context['constructions'] = page_obj  # Используем объекты страницы вместо полного списка
         context['active_filters'] = filter_set.active_filters
-
         context['total_volume'] = filter_set.calculate_total_volume()
+        context['page_obj'] = page_obj  # Добавляем объект страницы в контекст
 
         return context
-
 
 # class DetailTask(DetailView):
 #     model = Dashboard
