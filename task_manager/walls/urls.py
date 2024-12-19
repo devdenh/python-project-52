@@ -8,4 +8,5 @@ urlpatterns = [
     path('create/', views.WallRegistrate.as_view(), name='create'),
     path('<int:pk>/update/', views.WallUpdate.as_view(), name='update'),
     path('<int:pk>/delete/', views.WallDelete.as_view(), name='delete'),
+    path('<int:pk>/', views.WallDetail.as_view(), name='detail')
 ]

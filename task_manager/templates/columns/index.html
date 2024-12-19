@@ -25,7 +25,9 @@
     {% for column in object_list %}
       <tr>
         <td>{{ column.id }}</td>
-        <td>{{ column.name }}</td>
+        <td>
+          <a href="{% url 'columns:detail' column.id %}">{{ column.name }}</a>
+        </td>
         <td>{{ column.volume }}</td>
         <td>{{ column.project_sheet }}</td>
         <td>{{ column.project }}</td>

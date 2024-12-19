@@ -26,7 +26,7 @@
             <div class="col-md-6">
                 <!-- Фильтр по бетону -->
                 <div class="form-group ml-3 p-1 col-12">
-                    <label for="concrete">Выбрать бетон</label>
+                    <label for="concrete">Бетон</label>
                     <select id="concrete" name="concrete" multiple="multiple" class="form-control">
                         {% for concrete in filter.form.fields.concrete.queryset %}
                                 <option value="{{ concrete.id }}">{{ concrete.klas }}</option>
@@ -36,7 +36,7 @@
 
                 <!-- Выпадающий список с чекбоксами для колонн -->
                 <div class="form-group ml-3 p-1 col-12">
-                    <label for="column">Выбрать колонны</label>
+                    <label for="column">Колонны</label>
                     <select id="column" name="column" multiple="multiple" class="form-control">
                         {% for column in filter.form.fields.column.queryset %}
                             <option value="{{ column.id }}">{{ column.name }}</option>
@@ -45,8 +45,8 @@
                 </div>
 
                 <!-- Фильтр по секции -->
-               <div class="form-group ml-3 p-1 col">
-                  <label for="section">Выбрать секции</label>
+                <div class="form-group ml-3 p-1 col">
+                  <label for="section">Секции</label>
                   <select id="section" name="section" multiple="multiple">
                     {% for section in filter.form.fields.section.queryset %}
                       <option value="{{ section.id }}">{{ section.name }}</option>
@@ -59,7 +59,7 @@
             <div class="col-md-6">
                 <!-- Фильтр по этажу -->
                 <div class="form-group ml-3 p-1 col-12">
-                    <label for="floor">Выбрать этаж</label>
+                    <label for="floor">Этаж</label>
                     <select id="floor" name="floor" multiple="multiple" class="form-control">
                         {% for floor in filter.form.fields.floor.queryset %}
                             <option value="{{ floor.id }}">{{ floor.number }}</option>
@@ -69,7 +69,7 @@
 
                 <!-- Фильтр по стенам -->
                 <div class="form-group ml-3 p-1 col-12">
-                    <label for="wall">Выбрать стены</label>
+                    <label for="wall">Стены</label>
                     <select id="wall" name="wall" multiple="multiple" class="form-control">
                         {% for wall in filter.form.fields.wall.queryset %}
                                 <option value="{{ wall.id }}">{{ wall.name }}</option>
@@ -79,7 +79,7 @@
 
                 <!-- Фильтр по перекрытиям -->
                 <div class="form-group ml-3 p-1 col-12">
-                    <label for="slab">Выбрать перекрытия</label>
+                    <label for="slab">Перекрытия</label>
                     <select id="slab" name="slab" multiple="multiple" class="form-control">
                         {% for slab in filter.form.fields.slab.queryset %}
                                 <option value="{{ slab.id }}">{{ slab.name }}</option>
@@ -89,7 +89,7 @@
 
                 <!-- Фильтр по площадкам -->
                 <div class="form-group ml-3 p-1 col-12">
-                    <label for="transition">Выбрать площадки</label>
+                    <label for="transition">Площадки</label>
                     <select id="transition" name="transition" multiple="multiple" class="form-control">
                         {% for transition in filter.form.fields.transition.queryset %}
                                 <option value="{{ transition.id }}">{{ transition.name }}</option>
@@ -99,11 +99,53 @@
             </div>
         </div>
 
+        <!-- Новый блок для фильтров арматуры -->
+        <div class="row mt-9">
+            <div class="col-12">
+                <div class="form-group ml-3 p-1 col">
+                  <label for="bar_type">Тип арматуры</label>
+                  <select id="bar_type" name="bar_type" multiple="multiple" class="form-control">
+                    {% for bar in filter.form.fields.bar_type.choices %}
+                      <option value="{{ bar.0 }}">{{ bar.1 }}</option>
+                    {% endfor %}
+                  </select>
+                </div>
+
+                <div class="form-group ml-3 p-1 col">
+                  <label for="manufacture_place">Место изготовления арматуры</label>
+                  <select id="manufacture_place" name="manufacture_place" multiple="multiple" class="form-control">
+                    {% for place in filter.form.fields.manufacture_place.choices %}
+                      <option value="{{ place.0 }}">{{ place.1 }}</option>
+                    {% endfor %}
+                  </select>
+                </div>
+
+                <div class="form-group ml-3 p-1 col">
+                  <label for="armature_klas">Клас арматуры</label>
+                  <select id="armature_klas" name="armature_klas" multiple="multiple" class="form-control">
+                    {% for klas in filter.form.fields.armature_klas.queryset %}
+                      <option value="{{ klas.id }}">{{ klas.klas }}</option>
+                    {% endfor %}
+                  </select>
+                </div>
+
+                <div class="form-group ml-3 p-1 col">
+                  <label for="armature_diameter">Диаметр арматуры</label>
+                  <select id="armature_diameter" name="armature_diameter" multiple="multiple" class="form-control">
+                    {% for item in filter.form.fields.armature_diameter.queryset %}
+                      <option value="{{ item.id }}">{{ item.diameter }}</option>
+                    {% endfor %}
+                  </select>
+                </div>
+
+            </div>
+        </div>
+
         <!-- Кнопки для фильтрации и сброса фильтров -->
-        <div class="row mt-3">
-            <div class="col-12 text-center">
-                <input class="btn btn-primary ml-3" type="submit" value="Показать">
-                <a href="{% url 'dashboard:index' %}" class="btn btn-primary ml-3">Очистить фильтры</a>
+        <div class="row ml-5 mt-3">
+            <div class="col-12 text-center d-flex flex-column align-items-center">
+                <input class="btn btn-primary mb-2" type="submit" value="Показать">
+                <a href="{% url 'dashboard:index' %}" class="btn btn-primary">Очистить фильтры</a>
             </div>
         </div>
     </form>
@@ -125,29 +167,45 @@
 </div>
 
 <hr>
-  <h4>Общий объем бетона: {{ total_volume }} м³</h4>
+<h4>Общий объем бетона: {{ total_volume }} м³</h4>
+<h4>Общая масса арматуры: {{ total_mass|floatformat:2 }} кг</h4>
 <h2>Результаты</h2>
 <ul>
   {% for construction in constructions %}
     <li>
-      {{ construction }}
-      {% if construction.column %}
-        (Бетон: {{ construction.concrete.klas }}, Объем: {{ construction.column.volume }} м³)
-      {% endif %}
-      {% if construction.slab %}
-        (Бетон: {{ construction.concrete.klas }}, Объем: {{ construction.slab.volume }} м³, толщина: {{ construction.slab.thickness }})
-      {% endif %}
-      {% if construction.wall %}
-        (Бетон: {{ construction.concrete.klas }}, Объем: {{ construction.wall.volume }} м³)
-      {% endif %}
       {% if construction.transition %}
+        <a href="{% url 'transitions:detail' construction.transition.id %}">
+          {{ construction }}
+        </a>
         (Бетон: {{ construction.concrete.klas }}, Объем: {{ construction.transition.volume }} м³, толщина: {{ construction.transition.thickness }})
+      {% elif construction.wall %}
+        <a href="{% url 'walls:detail' construction.wall.id %}">
+          {{ construction }}
+        </a>
+        (Бетон: {{ construction.concrete.klas }}, Объем: {{ construction.wall.volume }} м³)
+      {% elif construction.column %}
+        <a href="{% url 'columns:detail' construction.column.id %}">
+          {{ construction }}
+        </a>
+        (Бетон: {{ construction.concrete.klas }}, Объем: {{ construction.column.volume }} м³)
+      {% elif construction.slab %}
+        <a href="{% url 'slabs:detail' construction.slab.id %}">
+          {{ construction }}
+        </a>
+        (Бетон: {{ construction.concrete.klas }}, Объем: {{ construction.slab.volume }} м³, толщина: {{ construction.slab.thickness }})
+      {% else %}
+        {{ construction }}
+      {% endif %}
+      {% if construction.armature %}
+        <p>Арматура: Диаметр {{ construction.armature.diameter.diameter }} mm</p>
+        <p>Масса: {{ construction.armature.calculate_mass|floatformat:2 }} кг</p>
       {% endif %}
     </li>
   {% empty %}
     <li>Нет результатов по данному фильтру.</li>
   {% endfor %}
 </ul>
+
 
 <!-- Пагинация -->
 <div class="pagination">
@@ -178,7 +236,8 @@
 <!-- Инициализация MultiSelect для всех полей -->
 <script type="text/javascript">
   $(document).ready(function() {
-      $('#column, #concrete, #section, #floor, #wall, #slab, #transition').multiselect({
+      $('#column, #concrete, #section, #floor, #wall, #slab, #transition, #bar_type, ' +
+          '#manufacture_place, #armature_klas, #armature_diameter').multiselect({
           includeSelectAllOption: true,
           selectAllText: 'Выбрать все',
           nonSelectedText: 'Выберите значения',

@@ -1,0 +1,19 @@
+
+<div class="row p-1">
+    <div class="col font-weight-bold">Арматура</div>
+</div>
+<ul>
+    {% for armature in armatures %}
+    <li>
+        <span>Класс: {{ armature.klas }}</span>,
+        <span>Диаметр: {{ armature.diameter.diameter }} mm</span>,
+        <span>Длина стержней: {{ armature.bar_length }} м</span>,
+        <span>Количество стержней: {{ armature.bar_count }}</span>,
+        <span>Тип стержня: {{ armature.get_bar_type_display }}</span>,
+        <span>Место изготовления: {{ armature.get_manufacture_place_display }}</span>,
+        <span>Масса п.м.: {{ armature.diameter.linear_weight }}</span>
+    </li>
+    {% empty %}
+    <li>Нет арматуры для отображения.</li>
+    {% endfor %}
+</ul>

@@ -1,0 +1,98 @@
+{% extends "layouts/form.html" %}
+{% block content %}
+<form enctype="multipart/form-data" class="container" method="post" id="column_form">
+    {% csrf_token %}
+    <div class="card">
+        <div class="card-header card-header-secondary">
+            <h4 class="card-title">Колонна</h4>
+        </div>
+        {% for field in form %}
+        <div class="form-group card-body mb-0">
+            <label for="{{ field.id_for_label }}" class="form-label">{{ field.label }}</label>
+            {% if field.field.required %}
+                <span style="color: red;" class="required">*</span>
+            {% endif %}
+            <div class="input-group">
+                {{ field }}
+            </div>
+            {% if field.help_text %}
+                <small style="color: grey">{{ field.help_text }}</small>
+            {% endif %}
+            {% for error in field.errors %}
+                <div style="color: red; font-size: small;">{{ error }}</div>
+            {% endfor %}
+        </div>
+        {% endfor %}
+    </div>
+
+    <!-- Inline formset for ColumnArmature -->
+    {% with named_formsets.armatures as formset %}
+    {{ formset.management_form }}
+    <script type="text/html" id="armatures-template">
+        <tr id="armatures-__prefix__" class="hide_all">
+            {% for field in formset.empty_form.hidden_fields %}
+            {{ field }}
+            {% endfor %}
+            {% for field in formset.empty_form.visible_fields %}
+            <td>{{ field }}</td>
+            {% endfor %}
+        </tr>
+    </script>
+    <div class="table-responsive card mt-4">
+        <div class="card-header card-header-secondary">
+            <h4 class="card-title">Добавить арматуру колонны</h4>
+        </div>
+        <table class="table card-body">
+            <thead class="text-secondary">
+                <tr>
+                    <th>Диаметр</th>
+                    <th>Класс</th>
+                    <th>Длина стержней</th>
+                    <th>Количество стержней</th>
+                    <th>Вид стержня</th>
+                    <th>Место изготовления</th>
+                    <th>Удалить?</th>
+                </tr>
+            </thead>
+            <tbody id="item-armatures">
+                {% for form in formset %}
+                {{ form.management_form }}
+                <tr id="armatures-{{ forloop.counter0 }}">
+                    {{ form.id }}
+                    {% for field in form.visible_fields %}
+                    <td>
+                        {{ field }}
+                        {% for error in field.errors %}
+                            <span style="color: red; font-size: small;">{{ error }}</span>
+                        {% endfor %}
+                    </td>
+                    {% endfor %}
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <a href="#" id="add-armature-button" class="btn btn-secondary add-armatures">Добавить арматуру</a>
+    </div>
+    {% endwith %}
+
+    <div class="form-group mt-4">
+        <button type="submit" class="btn btn-secondary btn-block">Сохранить</button>
+    </div>
+</form>
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('.add-armatures').click(function (ev) {
+            ev.preventDefault();
+            var count = $('#item-armatures').children().length;
+            var tmplMarkup = $('#armatures-template').html();
+            var compiledTmpl = tmplMarkup.replace(/__prefix__/g, count);
+            $('#item-armatures').append(compiledTmpl);
+
+            // Обновление количества форм
+            $('#id_armatures-TOTAL_FORMS').attr('value', count + 1);
+        });
+    });
+</script>
+{% endblock content %}

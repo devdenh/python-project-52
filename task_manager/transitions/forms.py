@@ -1,8 +1,8 @@
 from django import forms
 from django.forms import inlineformset_factory
-from django.http import HttpResponse
-from django.shortcuts import render
 
+from task_manager.forms import BaseArmatureForm
+from task_manager.projects.models import Project
 from task_manager.transitions.models import Transition, TransitionArmature
 
 
@@ -19,37 +19,24 @@ class TransitionForm(forms.ModelForm):
             'project_sheet': 'Лист проекта',
             'project': 'Проект'
         }
-        # widgets = {
-        #     'name': forms.TextInput(attrs={'class': 'form-control'}),
-        #     'volume': forms.NumberInput(attrs={'class': 'form-control'}),
-        #     'thickness': forms.NumberInput(attrs={'class': 'form-control'}),
-        #     'project_sheet': forms.TextInput(attrs={'class': 'form-control'}),
-        #     'project': forms.TextInput(attrs={'class': 'form-control'}),
-        # }
-
-class TransitionArmatureForm(forms.ModelForm):
-    class Meta:
-        model = TransitionArmature
-        fields = [
-            'diameter', 'klas', 'bar_length', 'bar_count',
-            'bar_type', 'manufacture_place'
-        ]
-        labels = {
-            'diameter': 'Диаметр',
-            'klas': 'Класс',
-            'bar_length': 'Длина стержней',
-            'bar_count': 'Количество стержней',
-            'bar_type': 'Вид стержня',
-            'manufacture_place': 'Место изготовления'
+        widgets = {
+            'name': forms.TextInput(attrs={'class': 'form-control'}),
+            'volume': forms.NumberInput(attrs={'class': 'form-control'}),
+            'thickness': forms.TextInput(attrs={'class': 'form-control'}),
+            'project_sheet': forms.TextInput(attrs={'class': 'form-control'}),
         }
-        # widgets = {
-        #     'diameter': forms.NumberInput(attrs={'class': 'form-control'}),
-        #     'klas': forms.TextInput(attrs={'class': 'form-control'}),
-        #     'bar_length': forms.NumberInput(attrs={'class': 'form-control'}),
-        #     'bar_count': forms.NumberInput(attrs={'class': 'form-control'}),
-        #     'bar_type': forms.TextInput(attrs={'class': 'form-control'}),
-        #     'manufacture_place': forms.TextInput(attrs={'class': 'form-control'}),
-        # }
+
+    project = forms.ModelChoiceField(
+        label=Meta.labels['project'],
+        queryset=Project.objects.all(),
+        widget=forms.Select(attrs={'class': 'form-control'}),
+        empty_label="Выберите проект"
+    )
+
+
+class TransitionArmatureForm(BaseArmatureForm):
+    class Meta(BaseArmatureForm.Meta):
+        model = TransitionArmature
 
 
 TransitionArmatureFormSet = inlineformset_factory(

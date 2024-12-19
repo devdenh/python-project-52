@@ -1,0 +1,47 @@
+{% extends 'layouts/base.html' %}
+{% load bootstrap4 %}
+{% load i18n %}
+
+{% block header %}
+Просмотр колонны
+{% endblock %}
+
+{% block content %}
+
+  <div class="card">
+      <div class="card-header bg-secondary text-white">
+              <h2>{{ object }}</h2>
+      </div>
+
+        <div class="card-body bg-light">
+            <p>{{ column.description }}</p>
+            <hr>
+                 <div class="row p-1">
+                    <div class="col">Наименование</div>
+                    <div class="col">{{ column.name }}</div>
+                </div>
+                <div class="row p-1">
+                    <div class="col">Объем</div>
+                    <div class="col">{{ column.volume }}</div>
+                </div>
+                <div class="row p-1">
+                    <div class="col">Дата создания</div>
+                    <div class="col">{{ column.project_sheet }}</div>
+                </div>
+                <div class="row p-1">
+                    <div class="col">Проект</div>
+                    <div class="col">{{ column.project }}</div>
+                </div>
+{% include 'layouts/armature.html' with armatures=column.columnarmature_set.all %}
+
+            <div class="row p-1">
+                <div class="col">
+          <a href="{% url 'columns:update' column.pk %}">{% translate "Update" %}</a>
+          <br>
+          <a href="{% url 'columns:delete' column.pk %}">{% translate "Delete" %}</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+{% endblock %}

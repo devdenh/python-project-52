@@ -16,19 +16,6 @@ DELETE_SUCCESS_MESSAGE = _("Task deleted Successfully")
 NOT_AUTHOR_MESSAGE = _("Only author can delete this task")
 
 
-# class IndexView(LoginRequiredMixin,
-#                 FilterView):
-#     model = Dashboard
-#     template_name = 'dashboard/index.html'
-#     filterset_class = DashboardFilterForm
-#
-#     def get_context_data(self, *, object_list=None, **kwargs):
-#         context = super().get_context_data(**kwargs)
-#         context["filter"] = DashboardFilterForm(self.request.GET,
-#                                                 queryset=self.get_queryset())
-#         return context
-
-
 class DashboardView(LoginRequiredMixin, FilterView):
     model = Dashboard
     template_name = 'dashboard/dashboard.html'
@@ -47,59 +34,15 @@ class DashboardView(LoginRequiredMixin, FilterView):
         page_number = self.request.GET.get('page')
         page_obj = paginator.get_page(page_number)
 
+        # Общая масса арматуры
+        total_mass = sum(construction.calculate_armature_mass() for construction in page_obj)
+
         context['filter'] = filter_set
         context['constructions'] = page_obj  # Используем объекты страницы вместо полного списка
         context['active_filters'] = filter_set.active_filters
         context['total_volume'] = filter_set.calculate_total_volume()
+        context['total_mass'] = total_mass  # Общая масса арматуры
         context['page_obj'] = page_obj  # Добавляем объект страницы в контекст
+        print("VIEW CALLED")
 
         return context
-
-# class DetailTask(DetailView):
-#     model = Dashboard
-#     template_name = "dashboard/detail.html"
-    # extra_context = {"labels": Label.objects.all()}
-
-
-# class TaskRegistrate(LoginRequiredMixin,
-#                      SuccessMessageMixin,
-#                      CreateView):
-#
-#     model = Task
-#     form_class = TaskForm
-#     template_name = 'tasks/create.html'
-#     success_url = reverse_lazy('tasks:index')
-#     success_message = REGISTRATION_SUCCESS_MESSAGE
-#
-#     def form_valid(self, form):
-#         form.instance.author = self.request.user
-#         return super().form_valid(form)
-#
-#
-# class TaskUpdate(LoginRequiredMixin,
-#                  SuccessMessageMixin,
-#                  UpdateView):
-#
-#     model = Task
-#     form_class = TaskForm
-#     template_name = 'tasks/update.html'
-#     success_url = reverse_lazy('tasks:index')
-#     success_message = UPDATE_SUCCESS_MESSAGE
-#
-#
-# class TaskDelete(LoginRequiredMixin,
-#                  UserPassesTestMixin,
-#                  SuccessMessageMixin,
-#                  DeleteView):
-#
-#     model = Task
-#     template_name = 'tasks/delete.html'
-#     success_url = reverse_lazy('tasks:index')
-#     success_message = DELETE_SUCCESS_MESSAGE
-#
-#     def test_func(self):
-#         return self.request.user.id == self.get_object().author.id
-#
-#     def handle_no_permission(self):
-#         messages.error(self.request, NOT_AUTHOR_MESSAGE)
-#         return redirect(reverse_lazy('tasks:index'))

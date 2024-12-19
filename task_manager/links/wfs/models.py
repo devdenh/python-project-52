@@ -3,11 +3,12 @@ from django.urls import reverse_lazy
 
 from task_manager.concrete.models import Concrete
 from task_manager.floors.models import Floor
+from task_manager.models import ArmatureMassCalculationMixin
 from task_manager.sections.models import Section
-from task_manager.walls.models import Wall
+from task_manager.walls.models import Wall, WallArmature
 
 
-class WFS(models.Model):
+class WFS(models.Model, ArmatureMassCalculationMixin):
     wall = models.ForeignKey(Wall, on_delete=models.CASCADE)
     floor = models.ForeignKey(Floor, on_delete=models.CASCADE)
     section = models.ForeignKey(Section, on_delete=models.CASCADE)
@@ -19,6 +20,9 @@ class WFS(models.Model):
 
     def get_absolute_url(self):
         return reverse_lazy('wfs:index')
+
+    def calculate_armature_mass(self):
+        return super().calculate_armature_mass(WallArmature, 'wall')
 
     def __str__(self):
         return (f"Стена {self.wall} "

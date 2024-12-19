@@ -26,7 +26,9 @@
     {% for slab in object_list %}
       <tr>
         <td>{{ slab.id }}</td>
-        <td>{{ slab.name }}</td>
+        <td>
+          <a href="{% url 'slabs:detail' slab.id %}">{{ slab.name }}</a>
+        </td>
         <td>{{ slab.volume }}</td>
         <td>{{ slab.thickness }}</td>
         <td>{{ slab.project_sheet }}</td>

@@ -1,6 +1,7 @@
 from django.db import models
 from django.urls import reverse_lazy
 
+from task_manager.models import BaseArmature
 from task_manager.projects.models import Project
 
 
@@ -15,3 +16,7 @@ class Wall(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class WallArmature(BaseArmature):
+    wall = models.ForeignKey(Wall, on_delete=models.CASCADE, null=True, blank=True)

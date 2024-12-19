@@ -14,7 +14,7 @@
   <thead>
     <tr>
       <th>{% translate "id"|upper %}</th>
-      <th>Наименование лестничной площадки</th>
+      <th>Наименование</th>
       <th>Объем</th>
       <th>Толщина</th>
       <th>Лист проекта</th>
@@ -26,7 +26,9 @@
     {% for transition in object_list %}
       <tr>
         <td>{{ transition.id }}</td>
-        <td>{{ transition.name }}</td>
+        <td>
+          <a href="{% url 'transitions:detail' transition.id %}">{{ transition.name }}</a>
+        </td>
         <td>{{ transition.volume }}</td>
         <td>{{ transition.thickness }}</td>
         <td>{{ transition.project_sheet }}</td>

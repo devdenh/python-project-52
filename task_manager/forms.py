@@ -23,3 +23,19 @@ class UserLoginForm(AuthenticationForm):
     class Meta:
         model = get_user_model()
         fields = ['username', 'password']
+
+
+class BaseArmatureForm(forms.ModelForm):
+    class Meta:
+        fields = [
+            'diameter', 'klas', 'bar_length', 'bar_count',
+            'bar_type', 'manufacture_place'
+        ]
+        labels = {
+            'diameter': 'Диаметр',
+            'klas': 'Класс',
+            'bar_length': 'Длина стержней',
+            'bar_count': 'Количество стержней',
+            'bar_type': 'Вид стержня',
+            'manufacture_place': 'Место изготовления'
+        }

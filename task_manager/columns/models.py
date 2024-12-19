@@ -1,6 +1,7 @@
 from django.db import models
 from django.urls import reverse_lazy
 
+from task_manager.models import BaseArmature
 from task_manager.projects.models import Project
 
 
@@ -15,3 +16,7 @@ class Column(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class ColumnArmature(BaseArmature):
+    column = models.ForeignKey(Column, on_delete=models.CASCADE, null=True, blank=True)

@@ -1,0 +1,47 @@
+{% extends 'layouts/base.html' %}
+{% load bootstrap4 %}
+{% load i18n %}
+
+{% block header %}
+Просмотр стены
+{% endblock %}
+
+{% block content %}
+
+  <div class="card">
+      <div class="card-header bg-secondary text-white">
+              <h2>{{ object }}</h2>
+      </div>
+
+        <div class="card-body bg-light">
+            <p>{{ wall.description }}</p>
+            <hr>
+                 <div class="row p-1">
+                    <div class="col">Наименование</div>
+                    <div class="col">{{ wall.name }}</div>
+                </div>
+                <div class="row p-1">
+                    <div class="col">Объем</div>
+                    <div class="col">{{ wall.volume }}</div>
+                </div>
+                <div class="row p-1">
+                    <div class="col">Дата создания</div>
+                    <div class="col">{{ wall.project_sheet }}</div>
+                </div>
+                <div class="row p-1">
+                    <div class="col">Проект</div>
+                    <div class="col">{{ wall.project }}</div>
+                </div>
+{% include 'layouts/armature.html' with armatures=wall.wallarmature_set.all %}
+
+            <div class="row p-1">
+                <div class="col">
+          <a href="{% url 'walls:update' wall.pk %}">{% translate "Update" %}</a>
+          <br>
+          <a href="{% url 'walls:delete' wall.pk %}">{% translate "Delete" %}</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+{% endblock %}

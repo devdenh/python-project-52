@@ -8,4 +8,5 @@ urlpatterns = [
     path('create/', views.SlabRegistrate.as_view(), name='create'),
     path('<int:pk>/update/', views.SlabUpdate.as_view(), name='update'),
     path('<int:pk>/delete/', views.SlabDelete.as_view(), name='delete'),
+    path('<int:pk>/', views.SlabDetail.as_view(), name='detail')
 ]

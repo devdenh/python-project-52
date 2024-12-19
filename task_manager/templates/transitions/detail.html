@@ -1,0 +1,53 @@
+{% extends 'layouts/base.html' %}
+{% load bootstrap4 %}
+{% load i18n %}
+
+{% block header %}
+Просмотр лестничной площадки
+{% endblock %}
+
+{% block content %}
+
+  <div class="card">
+      <div class="card-header bg-secondary text-white">
+              <h2>{{ object }}</h2>
+      </div>
+
+        <div class="card-body bg-light">
+            <p>{{ transition.description }}</p>
+            <hr>
+                 <div class="row p-1">
+                    <div class="col">Наименование</div>
+                    <div class="col">{{ transition.name }}</div>
+                </div>
+                <div class="row p-1">
+                    <div class="col">Объем</div>
+                    <div class="col">{{ transition.volume }}</div>
+                </div>
+                <div class="row p-1">
+                    <div class="col">Толщина</div>
+                    <div class="col">{{ transition.thickness }}</div>
+                </div>
+                <div class="row p-1">
+                    <div class="col">Дата создания</div>
+                    <div class="col">{{ transition.project_sheet }}</div>
+                </div>
+                <div class="row p-1">
+                    <div class="col">Проект</div>
+                    <div class="col">{{ transition.project }}</div>
+                </div>
+
+{% include 'layouts/armature.html' with armatures=transition.transitionarmature_set.all %}
+
+
+            <div class="row p-1">
+                <div class="col">
+          <a href="{% url 'transitions:update' transition.pk %}">{% translate "Update" %}</a>
+          <br>
+          <a href="{% url 'transitions:delete' transition.pk %}">{% translate "Delete" %}</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+{% endblock %}
